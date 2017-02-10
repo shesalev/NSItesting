@@ -23,11 +23,11 @@ namespace NsiTest.Pages.NoModalPage
         //$(By.id("classesTree-id-" + class_id)).click();
         //}
 
-        public void clkOpenClassModal(String class_id)
+        public void clkOpenClassModal(string entityId)
         {
             //waitLoader();
             //$$(By.cssSelector(".edit_view_modal")).findBy(Condition.attribute("value", class_id)).shouldBe(Condition.visible).click();
-            ClickEditViewModalByValue(class_id);
+            ClickEditViewModalByValue(entityId);
         }
 
         public void clkCreateClassModal()
@@ -35,6 +35,7 @@ namespace NsiTest.Pages.NoModalPage
             //$(By.id("classesTree-id-0")).shouldBe(Condition.visible).click();
             //    waitLoader();
             //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
+            addClassBtn.WaitUntilVisible();
             addClassBtn.Click();
         }
 

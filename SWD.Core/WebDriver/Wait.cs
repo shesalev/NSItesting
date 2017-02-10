@@ -27,7 +27,7 @@ namespace Swd.Core.WebDriver
                     }
                     System.Threading.Thread.Sleep(100);
                 }
-                catch (Exception e)     { lastException = e; }
+                catch (Exception e) { lastException = e; }
 
                 if (sw.Elapsed > timeOut)
                 {
@@ -74,6 +74,33 @@ namespace Swd.Core.WebDriver
             );
 
             return wdWait.Until(ExpectedConditions.InvisibilityOfElementLocated(by));
+        }
+
+        public static IWebDriver UntilFrameToBeAvailableAndSwitchToIt(By by, IWebDriver driver, TimeSpan timeOut)
+        {
+            WebDriverWait wdWait = new WebDriverWait(driver, timeOut);
+
+            wdWait.IgnoreExceptionTypes
+            (
+                typeof(ElementNotVisibleException),
+                typeof(NoSuchElementException),
+                typeof(StaleElementReferenceException)
+            );
+
+            return wdWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(by));
+        }
+        public static IWebDriver UntilFrameToBeAvailableAndSwitchToIt(string name, IWebDriver driver, TimeSpan timeOut)
+        {
+            WebDriverWait wdWait = new WebDriverWait(driver, timeOut);
+
+            wdWait.IgnoreExceptionTypes
+            (
+                typeof(ElementNotVisibleException),
+                typeof(NoSuchElementException),
+                typeof(StaleElementReferenceException)
+            );
+
+            return wdWait.Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(name));
         }
     }
 }

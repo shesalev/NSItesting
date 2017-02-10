@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//using System.Configuration;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using NsiTest.Pages.NoModalPage;
 using NsiTest.Tests;
 using Swd.Core.WebDriver;
@@ -14,7 +9,7 @@ using Swd.Core.Configuration;
 namespace NsiTest
 {
     [TestFixture]
-    class AllTest
+    public class AllTest
     {
         [SetUp]
         public void Initialize()
@@ -24,10 +19,13 @@ namespace NsiTest
 
         private void Login()
         {
-            String С_SESSION_ID = @Config.applicationUserSessionId;
-            
+            Console.WriteLine("Start Login");
+
+            String С_SESSION_ID;
+
             try
             {
+                С_SESSION_ID = @Config.applicationUserSessionId;
                 SwdBrowser.Driver.Navigate().GoToUrl(@Config.applicationMainUrl + С_SESSION_ID);
                 SwdBrowser.Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
 
@@ -41,11 +39,11 @@ namespace NsiTest
         }
 
         private void EnterToRequest(String pRequestId)
-        {            
+        {
             // Search nsi request in IR on requests page
             var reqListPage = new RequestListPage();
 
-            Assert.True(reqListPage.ContainsTitle(),"No login into application");
+            Assert.True(reqListPage.ContainsTitle(), "No login into application");
 
             var ir = reqListPage.GetIntReport();
 
@@ -60,7 +58,7 @@ namespace NsiTest
 
             reqViewPage.enterNsiBtn.Click();
 
-            Assert.True(reqViewPage.IsEnterToRequest(),"No enter into nsi request");
+            Assert.True(reqViewPage.IsEnterToRequest(), "No enter into nsi request");
         }
 
         [Test]
@@ -70,11 +68,37 @@ namespace NsiTest
 
             EnterToRequest("4248");
 
-            ClassTest classTest = new ClassTest();
+            var lFieldsList = LoadData.GetData("ClassData.xml");
 
-            classTest.setPosition();
+            EntityTest entityTest = new ClassTest("lastId", lFieldsList);
 
-            classTest.Add();
+            entityTest.setPosition();
+
+            string lastId="";
+
+            try
+            {
+                lastId = entityTest.Add(lFieldsList);
+            }
+            catch (NsiTest.Exceptions.PageError e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Assert.That(false, e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Assert.That(false, e.Message);
+            }
+
+            //if (lastId.Length > 0)
+            //{
+            entityTest =new ClassTest(lastId, lFieldsList);
+            entityTest.setPosition(lastId);
+
+                entityTest.Delete();
+            //}
+
         }
 
         [TearDown]

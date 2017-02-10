@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+
 using NsiTest.Tests.Positions;
+using NsiTest.Fields;
 
 namespace NsiTest.Tests
 {
     public abstract class EntityTest
     {
+        protected string entityId;
+        protected IList<NsiElementField> fieldsList;
+
         protected PositionPageAction positionPageAction;
         protected PositionEntityAction positionEntityAction;
 
+        public EntityTest(string pEntityId, IList<NsiElementField> pFieldsList)
+        {
+            this.entityId = pEntityId;
+            this.fieldsList = pFieldsList;
+        }
 
         // Установка объекта позиции
         public void setPositionPageAction(PositionPageAction positionPageAction)
@@ -31,12 +42,12 @@ namespace NsiTest.Tests
         }
 
 
-        public abstract String Add();
+        public abstract String Add(IList<NsiElementField> pFieldsList);
 
-        public abstract void Edit();
+        public abstract void Edit(IList<NsiElementField> pFieldsList);
 
         public abstract void Delete();
 
-        public abstract void Repair();
+        public abstract void Repair(IList<NsiElementField> pFieldsList);
     }
 }

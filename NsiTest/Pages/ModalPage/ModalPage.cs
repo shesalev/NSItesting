@@ -1,8 +1,10 @@
-﻿using Swd.Core.Pages;
+﻿using System;
+using Swd.Core.Pages;
 using Swd.Core.WebDriver;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
+using NsiTest.Elements;
+using System.Collections.Generic;
 
 namespace NsiTest.Pages.ModalPage
 {
@@ -23,6 +25,9 @@ namespace NsiTest.Pages.ModalPage
         [FindsBy(How = How.XPath, Using = @"id(""btnRepair"")")]
         protected IWebElement RepairBtn { get; private set; }
 
+        [FindsBy(How = How.CssSelector, Using = @"#messages .htmldbUlErr li")]
+        protected IWebElement MessTextElem { get; private set; }
+
         [FindsBy(How = How.CssSelector, Using = @"#messages img.uErrorIcon")]
         protected IWebElement ErrorMess { get; private set; }
 
@@ -32,64 +37,53 @@ namespace NsiTest.Pages.ModalPage
 
         public ModalPage()
         {
-            //switchTo().frame($(By.className("cboxIframe")));
-            //FindElement(By.ClassName("cboxIframe"))
-            //ModalWindow.WaitUntilVisible();
-            Driver.SwitchTo().Frame(0);
+            Console.WriteLine("ModalPage");
+            SwitchToModal(By.CssSelector(".cboxIframe"));
         }
 
         private void CheckError()
         {
-            //ErrorMess.WaitUntilVisible(100);
-
             if (ErrorMess.IsDisplayedSafe())
             {
-                throw new NotFoundException();
+                Console.WriteLine(ErrorPageMessage.GetMessage(MessTextElem));
+                throw new NsiTest.Exceptions.PageError(ErrorPageMessage.GetMessage(MessTextElem));
             }
         }
 
         private void CheckErrorAndSwitchDefault()
         {
             CheckError();
-            Driver.SwitchTo().DefaultContent();
+            SwitchToDefaultContent();
         }
 
         public void Cancel()
         {
-            CancelBtn.WaitUntilVisible();
-            CancelBtn.Click();
-            Driver.SwitchTo().DefaultContent();
+            CancelBtn.ClickWait();
+            SwitchToDefaultContent();
         }
 
         public void Add()
         {
-            //$(By.id("btnCreate")).shouldBe(Condition.visible).click();
-            CreateBtn.WaitUntilVisible();
-            CreateBtn.Click();
+            CreateBtn.ClickWait();
             CheckErrorAndSwitchDefault();
         }
 
         public void Edit()
         {
-            //$(By.id("btnSave")).shouldBe(Condition.enabled).click();
-            SaveBtn.WaitUntilVisible();
-            SaveBtn.Click();
+            SaveBtn.ClickWait();
             CheckErrorAndSwitchDefault();
         }
 
         public void Delete()
         {
-            //$(By.id("btnDelete")).shouldBe(Condition.visible).click();
-            IAlert lAlert = Driver.SwitchTo().Alert();
-            lAlert.Accept();
+            DeleteBtn.ClickWait();
+            AcceptAlert();
             CheckErrorAndSwitchDefault();
         }
 
         public void Repair()
         {
-            //$(By.id("btnRepair")).shouldBe(Condition.visible).click();
-            RepairBtn.WaitUntilVisible();
-            RepairBtn.Click();
+            RepairBtn.ClickWait();
             CheckErrorAndSwitchDefault();
         }
     }

@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,8 +58,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,6 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllTest.cs" />
+    <Compile Include="Elements\ErrorPageMessage.cs" />
+    <Compile Include="Elements\NsiNullElement.cs" />
+    <Compile Include="Exceptions\PageError.cs" />
+    <Compile Include="Tests\LoadData.cs" />
     <Compile Include="Elements\InteractiveReport.cs" />
     <Compile Include="Elements\MainTabElement.cs" />
     <Compile Include="Elements\NsiElement.cs" />
@@ -98,6 +105,7 @@
     <Compile Include="Tests\Positions\PositionEntityClass.cs" />
     <Compile Include="Tests\Positions\PositionPageAction.cs" />
     <Compile Include="Tests\Positions\PositionPageClass.cs" />
+    <Compile Include="UnitTests\ErrorPageMessageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -116,7 +124,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataTest\ClassData.xml" />
+    <Content Include="DataTest\ClassData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

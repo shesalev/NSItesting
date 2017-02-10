@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 using NsiTest.Pages.NoModalPage;
 using NsiTest.Pages.ModalPage;
 using NsiTest.Tests.Positions;
+using NsiTest.Fields;
 
 namespace NsiTest.Tests
 {
     public class ClassTest : EntityTest
     {
-        private String ClassId = "1";
+        private string ClassId;
+
+        public ClassTest(string pEntityId, IList<NsiElementField> pFieldsList) : base(pEntityId, pFieldsList)
+        {
+            this.ClassId = pEntityId;
+            
+            base.setPositionPageAction(new PositionPageClass());
+            base.setPositionEntityAction(new PositionEntityClass());
+        }
 
         private ClassPage OpenModal()
         {
@@ -15,29 +26,27 @@ namespace NsiTest.Tests
             classPage.clkOpenClassModal(ClassId);
 
             return classPage;
-        }
-
-        public ClassTest()
-        {
-            base.setPositionPageAction(new PositionPageClass());
-            base.setPositionEntityAction(new PositionEntityClass());
-        }
+        }        
 
         override
-        public String Add(/*ArrayList<NsiElementField> pFieldsList*/)
+        public String Add(IList<NsiElementField> pFieldsList)
         {
+            String l_class_id = "";
+
             ClassPage classPage = new ClassPage();
             classPage.clkCreateClassModal();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-            defaultModalPage.FillForm(/*pFieldsList*/);
+
+            defaultModalPage.FillForm(pFieldsList);
             defaultModalPage.Add();
 
-            classPage.CheckSuccessMess();
+            // TODO: Edit page 30 by action "Add class"
+            //classPage.CheckSuccessMess();
 
-            String l_class_id = classPage.GetLastAddEntityId();
+            l_class_id = classPage.GetLastAddEntityId();
 
             Console.WriteLine(l_class_id);
 
@@ -47,20 +56,20 @@ namespace NsiTest.Tests
 
             classPage.clkOpenClassModal(l_class_id);
 
-            this.ClassId = l_class_id;
+            //this.ClassId = l_class_id;
 
             return l_class_id;
         }
 
         override
-        public void Edit(/*ArrayList<NsiElementField> pFieldsList*/)
+        public void Edit(IList<NsiElementField> pFieldsList)
         {
             ClassPage classPage = OpenModal();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-            defaultModalPage.FillForm(/*pFieldsList*/);
+            defaultModalPage.FillForm(pFieldsList);
 
             defaultModalPage.Edit();
 
@@ -68,14 +77,14 @@ namespace NsiTest.Tests
         }
 
         override
-        public void Repair(/*ArrayList<NsiElementField> pFieldsList*/)
+        public void Repair(IList<NsiElementField> pFieldsList)
         {
             ClassPage classPage = OpenModal();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-            defaultModalPage.FillForm(/*pFieldsList*/);
+            defaultModalPage.FillForm(pFieldsList);
 
             defaultModalPage.Repair();
         }
@@ -89,7 +98,8 @@ namespace NsiTest.Tests
 
             defaultModalPage.Delete();
 
-            classPage.CheckSuccessMess();
+            // TODO: Edit page 30 by action "Delete class"
+            //classPage.CheckSuccessMess();
         }
 
         public void View()

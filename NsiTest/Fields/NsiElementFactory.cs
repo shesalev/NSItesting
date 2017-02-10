@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using Swd.Core.WebDriver;
 using NsiTest.Elements;
 
 namespace NsiTest.Fields
@@ -10,7 +9,7 @@ namespace NsiTest.Fields
         {
             NsiElement nsiElement = null;
 
-            IWebElement lInput = pElement.WaitUntilVisible();
+            IWebElement lInput = pElement;
 
             // TODO: add other using types
             if (NsiElement.hasClass(lInput, "modal_window_input"))
@@ -25,6 +24,10 @@ namespace NsiTest.Fields
             //{
             //    nsiElement = new NsiSuperLov(lInput);
             //}
+            else
+            {
+                nsiElement = new NsiNullElement(lInput);
+            }
 
             return nsiElement;
         }

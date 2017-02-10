@@ -18,7 +18,7 @@ namespace Swd.Core.WebDriver
         /// <summary>
         /// Default timeout for <see cref=" WaitUntilVisible"/> methods
         /// </summary>
-        public static int DefaultTimeOutMilliseconds = 1000;
+        public static int DefaultTimeOutMilliseconds = 8000;
 
         /// <summary>
         /// Waits until element is visible. Internally, uses element.Displayed with ignored WebDriver exceptions
@@ -37,7 +37,7 @@ namespace Swd.Core.WebDriver
         {
             return Wait.UntilVisible(element, TimeSpan.FromMilliseconds(timeOutMilliseconds));
         }
-        
+
         /// <summary>
         /// Waits until element is visible. Internally, uses element.Displayed with ignored WebDriver exceptions
         /// </summary>
@@ -46,6 +46,16 @@ namespace Swd.Core.WebDriver
         public static IWebElement WaitUntilVisible(this IWebElement element)
         {
             return Wait.UntilVisible(element, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
+        }
+
+        /// <summary>
+        /// Waits until frame is visible and switch to it
+        /// </summary>
+        public static IWebDriver UntilFrameToBeAvailableAndSwitchToIt(this IWebDriver driver, string name)
+        {
+            //IWebElement lFrame = driver.FindElements(name).First();
+            return Wait.UntilFrameToBeAvailableAndSwitchToIt(name, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
+            //return Wait.UntilFrameToBeAvailableAndSwitchToIt(by, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
         }
 
         /// <summary>
@@ -92,6 +102,53 @@ namespace Swd.Core.WebDriver
             }
             return result;
 
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether or not this element is displayed.  
+        /// This method  suppresses any WebDriver exceptions  
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static IWebElement GetFirstVisible(this IList<IWebElement> elements)
+        {
+            IWebElement result = null;
+
+            foreach (IWebElement element in elements)
+            {
+                element.WaitUntilVisible(100);
+                if (element.IsDisplayedSafe())
+                {
+                    return element;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Waits until element is visible and click it
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static IWebElement ClickWait(this IWebElement btn)
+        {
+            btn.WaitUntilVisible();
+            btn.Click();
+            return btn;
+        }
+
+        /// <summary>
+        /// Waits until element is visible and click it
+        /// </summary>
+        /// <param name="btn"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
+        public static IWebElement ClickWait(this IWebElement btn, TimeSpan timeOut)
+        {
+            btn.WaitUntilVisible(timeOut);
+            btn.Click();
+            return btn;
         }
     }
 }

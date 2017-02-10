@@ -29,13 +29,16 @@ namespace NsiTest.Pages.ModalPage
         {
             //IWebElement lBtn = Driver.FindElements(By.CssSelector(".redirectBTN"));
 
-            IList<IWebElement> lBtns = Driver.FindElements(By.XPath(".//a[contains(@class,'redirectBTN')]"));
+            IList<IWebElement> lBtns = FindElements(By.XPath(".//a[contains(@class,'redirectBTN')]"));
             //Console.WriteLine("Count rows:" + lRowsList.Count());
-            
-            var lBtn = lBtns[lBtns.Count() - 1];
 
-            lBtn.Click();
+            Console.WriteLine("clkRedirectBtn");
+            Console.WriteLine(lBtns.Count());
 
+            var lBtn = lBtns.First();//[lBtns.Count() - 1];
+            Console.WriteLine(lBtn);
+
+            lBtn.ClickWait();
         }
     }
 }
