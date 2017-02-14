@@ -3,20 +3,23 @@ using System.Collections.Generic;
 
 using NsiTest.Tests.Positions;
 using NsiTest.Fields;
+using NsiTest.Pages.NoModalPage;
+using NsiTest.Pages.ModalPage;
 
 namespace NsiTest.Tests
 {
     public abstract class EntityTest
     {
-        protected string entityId;
+        ////protected NoModalPage EntityPage;
+        protected string EntityId;
         protected IList<NsiElementField> fieldsList;
 
         protected PositionPageAction positionPageAction;
-        protected PositionEntityAction positionEntityAction;
+        //protected PositionEntityAction positionEntityAction;
 
         public EntityTest(string pEntityId, IList<NsiElementField> pFieldsList)
         {
-            this.entityId = pEntityId;
+            this.EntityId = pEntityId;
             this.fieldsList = pFieldsList;
         }
 
@@ -26,21 +29,17 @@ namespace NsiTest.Tests
             this.positionPageAction = positionPageAction;
         }
 
-        public void setPositionEntityAction(PositionEntityAction positionEntityAction)
-        {
-            this.positionEntityAction = positionEntityAction;
-        }
+        //public void setPositionEntityAction(PositionEntityAction positionEntityAction)
+        //{
+        //    this.positionEntityAction = positionEntityAction;
+        //}
 
         public void setPosition()
         {
             positionPageAction.set();
         }
 
-        public void setPosition(String p_entity_id)
-        {
-            positionEntityAction.set(p_entity_id);
-        }
-
+        public abstract void setPosition(String p_entity_id);
 
         public abstract String Add(IList<NsiElementField> pFieldsList);
 

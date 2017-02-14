@@ -10,93 +10,82 @@ namespace NsiTest.Tests
 {
     public class ClassTest : EntityTest
     {
-        private string ClassId;
-
+        private ClassTabPage classTabPage;
         public ClassTest(string pEntityId, IList<NsiElementField> pFieldsList) : base(pEntityId, pFieldsList)
         {
-            this.ClassId = pEntityId;
-            
+            this.classTabPage = new ClassTabPage();
             base.setPositionPageAction(new PositionPageClass());
-            base.setPositionEntityAction(new PositionEntityClass());
         }
 
-        private ClassPage OpenModal()
+        public override void setPosition(String p_entity_id)
         {
-            ClassPage classPage = new ClassPage();
-            classPage.clkOpenClassModal(ClassId);
-
-            return classPage;
-        }        
+            //PositionEntityAction.setPosition(classTabPage, p_entity_id);
+            classTabPage.SearchByIdGuid(p_entity_id);
+        }
 
         override
         public String Add(IList<NsiElementField> pFieldsList)
         {
             String l_class_id = "";
 
-            ClassPage classPage = new ClassPage();
-            classPage.clkCreateClassModal();
+            classTabPage.clkCreateClassModal();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-
             defaultModalPage.FillForm(pFieldsList);
             defaultModalPage.Add();
+
+            Console.Write("");
 
             // TODO: Edit page 30 by action "Add class"
             //classPage.CheckSuccessMess();
 
-            l_class_id = classPage.GetLastAddEntityId();
+            l_class_id = classTabPage.GetLastAddEntityId();
 
-            Console.WriteLine(l_class_id);
+            this.EntityId = l_class_id;
 
             setPosition(l_class_id);
 
             //classPage.chkAddIcon(l_class_id);
 
-            classPage.clkOpenClassModal(l_class_id);
-
-            //this.ClassId = l_class_id;
+            classTabPage.clkEditViewClassModal(l_class_id);
 
             return l_class_id;
+
+        }
+
+        protected DefaultModalPage OpenAndFillModal(ClassTabPage pClassTabPage, string pEntity, IList<NsiElementField> pFieldsList)
+        {
+            // Open modal form
+            pClassTabPage.clkEditViewClassModal(pEntity);
+
+            DefaultModalPage defaultModalPage = new DefaultModalPage();
+
+            // Fill form
+            defaultModalPage.FillForm(pFieldsList);
+
+            return defaultModalPage;
         }
 
         override
         public void Edit(IList<NsiElementField> pFieldsList)
         {
-            ClassPage classPage = OpenModal();
+            OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Edit();
 
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            // Fill form
-            defaultModalPage.FillForm(pFieldsList);
-
-            defaultModalPage.Edit();
-
-            classPage.CheckSuccessMess();
+            //classPage.CheckSuccessMess();
         }
 
         override
         public void Repair(IList<NsiElementField> pFieldsList)
         {
-            ClassPage classPage = OpenModal();
-
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            // Fill form
-            defaultModalPage.FillForm(pFieldsList);
-
-            defaultModalPage.Repair();
+            OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Repair();
         }
 
         override
         public void Delete()
         {
-            ClassPage classPage = OpenModal();
-
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            defaultModalPage.Delete();
+            OpenAndFillModal(classTabPage, this.EntityId, new List<NsiElementField>()).Delete();
 
             // TODO: Edit page 30 by action "Delete class"
             //classPage.CheckSuccessMess();
@@ -104,11 +93,7 @@ namespace NsiTest.Tests
 
         public void View()
         {
-            ClassPage classPage = OpenModal();
-
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            defaultModalPage.Cancel();
+            OpenAndFillModal(classTabPage, this.EntityId, new List<NsiElementField>()).Cancel();
         }
     }
 }

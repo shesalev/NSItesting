@@ -5,6 +5,9 @@ using Swd.Core.Pages;
 using Swd.Core.WebDriver;
 using OpenQA.Selenium;
 using NsiTest.Elements;
+using NsiTest.Exceptions;
+using NsiTest.Pages.ModalPage;
+using NsiTest.Fields;
 
 namespace NsiTest.Pages.NoModalPage
 {
@@ -16,29 +19,27 @@ namespace NsiTest.Pages.NoModalPage
 
         public bool ContainsTitle()
         {
-            return this.GetTitle().Contains(C_TITLE);
+            var lTitle = this.GetTitle();
+            var res = lTitle.Contains(C_TITLE);
+            if (!res)
+            {
+                throw new TitleError("Current title \"" + lTitle + "\" don`t contain template title \"" + C_TITLE + "\"");
+            }
+            return true;
         }
+
 
         public void ClickEditViewModalByValue(String pValue)
         {
-            //IList<IWebElement> lRowsList = Driver.FindElements(By.XPath(".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]"));
+            IWebElement lSelectRow = GetEditViewEntityBtn(pValue);
 
-            //Console.WriteLine("ClickEditViewModalByValue");
-            //Console.WriteLine("Count rows:" + lRowsList.Count());
-
-            IWebElement lSelectRow = FindElementsFirstVisible(By.XPath(".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]"));
-
-            //lRowsList.Last();
-
-            //lSelectRow.WaitUntilVisible();
-
-            lSelectRow.Click();
+            lSelectRow.ClickWait();
         }
 
         public String GetLastAddEntityId()
         {
             IWebElement l_lastId = FindElement(By.Id("P0_ENTITY_ID_LAST_ADD"));
-            //l_lastId.WaitUntilVisible();
+
             return l_lastId.GetAttribute("value");
         }
 
@@ -52,13 +53,40 @@ namespace NsiTest.Pages.NoModalPage
         // Open modal search form on any no modal page
         public void globalOpenSearch(String idGuid)
         {
-            IJavaScriptExecutor js = Driver as IJavaScriptExecutor;
-            string title = (string)js.ExecuteScript("$.event.trigger('open_search'," + idGuid + ");");
+            try
+            {
+                //IJavaScriptExecutor js = Driver as IJavaScriptExecutor;
+                //string title = (string)js.ExecuteScript("$.event.trigger('open_search'," + idGuid + ");");
+                SwdBrowser.ExecuteScript("$.event.trigger('open_search','" + idGuid + "');");
+            }
+            catch (Exception e)
+            {
+                throw new GlobalSearchPageError("Open global search error: " + e.Message);
+            }
+        }
+
+        public void SearchByIdGuid(String idGuid)
+        {
+            IWebElement editBtn = GetEditViewEntityBtn(idGuid);
+
+            if (editBtn == null)
+            {
+                globalOpenSearch(idGuid);
+
+                SearchModalPage searchModalPage = new SearchModalPage();
+
+                searchModalPage.clkRedirectBtn();
+            }
         }
 
         public void goToClasses()
         {
             mainTabElement.goToClasses();
+        }
+
+        public void goToSearch()
+        {
+            mainTabElement.goToSearch();
         }
     }
 }

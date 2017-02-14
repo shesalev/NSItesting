@@ -59,6 +59,38 @@ namespace Swd.Core.WebDriver
         }
 
         /// <summary>
+        /// Waits until frame is visible and switch to it
+        /// </summary>
+        public static bool FastVisibleElement(this IWebDriver driver, By by)
+        {
+            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(200));
+            //IWebElement lElement = driver.FindElement(by);
+            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
+            var res = true;
+            try
+            {
+                Wait.UntilVisible(by, driver, TimeSpan.FromMilliseconds(200));
+            }
+            catch (/*OpenQA.Selenium.NoSuchElementException*/Exception e)
+            {
+                res = false;
+            }
+            return res;
+            //return lElement;
+            //return Wait.UntilFrameToBeAvailableAndSwitchToIt(by, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
+        }
+
+        public static IWebElement FindElementBy(this IWebDriver driver, By by, TimeSpan timeOut)
+        {
+            return Wait.UntilVisible(by, driver, timeOut);
+        }
+
+        public static IWebElement FindElementBy(this IWebDriver driver, By by)
+        {
+            return Wait.UntilVisible(by, driver, TimeSpan.FromSeconds(10));
+        }
+
+        /// <summary>
         /// Replaces WebDriver’s element.Text property. Gets value from 
         /// *input* and *select* tags rather than returning text inside those elements. 
         /// </summary>
@@ -91,6 +123,7 @@ namespace Swd.Core.WebDriver
         public static bool IsDisplayedSafe(this IWebElement element)
         {
             bool result = false;
+
             try
             {
                 result = element.Displayed;
@@ -101,7 +134,6 @@ namespace Swd.Core.WebDriver
                 // Empty; Ignored
             }
             return result;
-
         }
 
         /// <summary>
@@ -116,7 +148,8 @@ namespace Swd.Core.WebDriver
 
             foreach (IWebElement element in elements)
             {
-                element.WaitUntilVisible(100);
+                element.WaitUntilVisible(200);
+                //element
                 if (element.IsDisplayedSafe())
                 {
                     return element;
@@ -126,6 +159,11 @@ namespace Swd.Core.WebDriver
             return result;
         }
 
+        public static IList<IWebElement> GetVisibleElements(this IWebDriver driver, By by)
+        {
+            return Wait.UntilListVisible(by, driver, TimeSpan.FromSeconds(10));
+        }
+
         /// <summary>
         /// Waits until element is visible and click it
         /// </summary>
@@ -133,7 +171,8 @@ namespace Swd.Core.WebDriver
         /// <returns></returns>
         public static IWebElement ClickWait(this IWebElement btn)
         {
-            btn.WaitUntilVisible();
+            btn.WaitUntilVisible(TimeSpan.FromSeconds(10));
+
             btn.Click();
             return btn;
         }

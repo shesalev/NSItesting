@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
-using NsiTest.Elements;
 
-namespace NsiTest.Fields
+namespace NsiTest.Elements
 {
     public class NsiElementFactory
     {

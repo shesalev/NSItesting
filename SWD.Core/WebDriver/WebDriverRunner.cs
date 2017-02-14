@@ -107,7 +107,6 @@ namespace Swd.Core.WebDriver
                         EnableNativeEvents = true, // just as an example, you don't need this
                         IgnoreZoomLevel = true
                     };
-
                     options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
                     return new InternetExplorerDriver(options);
                 case browser_PhantomJS:

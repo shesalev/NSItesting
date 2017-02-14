@@ -21,8 +21,7 @@ namespace NsiTest.Pages.ModalPage
         {
             foreach (NsiElementField lField in pFieldsList)
             {
-                IWebElement pageInputEl = FindElement(By.Id(lField.getId())).WaitUntilVisible(TimeSpan.FromSeconds(10));
-                //pageInputEl.;
+                IWebElement pageInputEl = FindElementBy(By.Id(lField.getId()))/*.WaitUntilVisible(TimeSpan.FromSeconds(10))*/;
                
                 NsiElement nsiEl = nsiElementFactory.CreateNsiElement(pageInputEl);
 

@@ -9,9 +9,11 @@ namespace NsiTest.Tests.Positions
         {
             Console.WriteLine("Go to class entity");
 
-            ClassPage classPage = new ClassPage();
+            ClassTabPage classPage = new ClassTabPage();
 
             classPage.goToClasses();
+
+            //classPage.goToSearch();
         }
     }
 }

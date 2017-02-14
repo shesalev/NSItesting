@@ -25,5 +25,35 @@
         </field>
       </fields>
     </entity>
+    <entity>
+      <type>class</type>
+      <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P31_PARENT_CLASS_ID</name>
+          <value>100061273</value>
+        </field>
+        <field>
+          <name>P31_CLASS_NAME</name>
+          <value>test1</value>
+        </field>
+        <field>
+          <name>P31_CLASS_DESCRIPTION</name>
+          <value>test description edit</value>
+        </field>
+        <field>
+          <name>P31_ISRESTRICT</name>
+          <value>1</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>class</type>
+      <id>lastAdd</id>
+      <action>delete</action>
+      <fields>
+      </fields>
+    </entity>
   </entitys>
 </suit>

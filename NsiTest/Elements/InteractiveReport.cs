@@ -37,12 +37,12 @@ namespace NsiTest.Elements
             //IList<IWebElement> lRowsList = Driver.FindElements(By.XPath("//*[@value=\"" + pValue + "\"][last()]"));
             //IList<IWebElement> lRowsList = Driver.FindElements(By.XPath("//*[@value=\"" + pValue + "\"][last()]"));
             //IList<IWebElement> lRowsList = Driver.FindElements(By.XPath("//*[@class=\"apexir_WORKSHEET_DATA\"]"));
-            IList<IWebElement> lRowsList = Driver.FindElements(By.XPath(".//table[@class='apexir_WORKSHEET_DATA']/tbody/tr/td/a[@value='" + pValue + "']"));
+            IList<IWebElement> lRowsList = FindElements(By.XPath(".//table[@class='apexir_WORKSHEET_DATA']/tbody/tr/td/a[@value='" + pValue + "']"));
             //Console.WriteLine("Count rows:" + lRowsList.Count());
 
-            var lSelectRow = lRowsList[lRowsList.Count()-1];
+            var lSelectRow = lRowsList.Last();
 
-            lSelectRow.Click();
+            lSelectRow.ClickWait();
 
             //foreach (var lRow in lRowsList)
             //{

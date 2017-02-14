@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NsiTest.Pages.NoModalPage;
 
 namespace NsiTest.Tests.Positions
 {
-    public interface PositionEntityAction
+    public static class PositionEntityAction
     {
-        void set(String p_entity_id);
+        public static void setPosition(NoModalPage pEntityPage,string pEntityId) {
+            Console.WriteLine("Go to entity");
+
+            pEntityPage.SearchByIdGuid(pEntityId);
+        }
     }
 }

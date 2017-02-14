@@ -5,7 +5,7 @@ using Swd.Core.WebDriver;
 
 namespace NsiTest.Pages.NoModalPage
 {
-    public class ClassPage : NoModalPageWithIR
+    public class ClassTabPage : NoModalPageWithIR
     {
         [FindsBy(How = How.XPath, Using = @"id(""addClassBtn"")")]
         public IWebElement addClassBtn { get; set; }
@@ -23,7 +23,7 @@ namespace NsiTest.Pages.NoModalPage
         //$(By.id("classesTree-id-" + class_id)).click();
         //}
 
-        public void clkOpenClassModal(string entityId)
+        public void clkEditViewClassModal(string entityId)
         {
             //waitLoader();
             //$$(By.cssSelector(".edit_view_modal")).findBy(Condition.attribute("value", class_id)).shouldBe(Condition.visible).click();

@@ -28,8 +28,8 @@ namespace NsiTest.Pages.ModalPage
         [FindsBy(How = How.CssSelector, Using = @"#messages .htmldbUlErr li")]
         protected IWebElement MessTextElem { get; private set; }
 
-        [FindsBy(How = How.CssSelector, Using = @"#messages img.uErrorIcon")]
-        protected IWebElement ErrorMess { get; private set; }
+        //[FindsBy(How = How.CssSelector, Using = @"#messages img.uErrorIcon")]
+        //protected IList<IWebElement> ErrorMess { get; private set; }
 
         [FindsBy(How = How.CssSelector, Using = ".cboxIframe")]
         protected IWebElement ModalWindow { get; private set; }
@@ -43,9 +43,12 @@ namespace NsiTest.Pages.ModalPage
 
         private void CheckError()
         {
-            if (ErrorMess.IsDisplayedSafe())
+            //var err = FastFindElement(By.CssSelector("#messages .htmldbUlErr li"));
+
+            //if (/*err.Count > 0*/err.IsDisplayedSafe())
+            var err = FastVisibleElement(By.CssSelector("#messages .htmldbUlErr li"));
+            if (err)
             {
-                Console.WriteLine(ErrorPageMessage.GetMessage(MessTextElem));
                 throw new NsiTest.Exceptions.PageError(ErrorPageMessage.GetMessage(MessTextElem));
             }
         }

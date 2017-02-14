@@ -7,7 +7,6 @@ namespace NsiTest.Elements
     {
         public void goToRequests()
         {
-
             FindElement(By.Id("tab_Requests")).Click();
         }
 

@@ -8,9 +8,9 @@ namespace NsiTest.Tests
 {
     public static class LoadData
     {
-        public static IList<NsiElementField> GetData(String pPathXMLFile)
+        public static IList<NsiEntityField> GetData(String pPathXMLFile)
         {
-            IList<NsiElementField> lData = new List<NsiElementField>();
+            IList<NsiEntityField> lEntity = new List<NsiEntityField>();
             try
             {
                 string currDir = Environment.CurrentDirectory.ToString();
@@ -30,25 +30,29 @@ namespace NsiTest.Tests
                     foreach (XElement entityEl in entitysEl.Elements("entity"))
                     {
                         var typeEl = entityEl.Element("type");
-                        Console.WriteLine("    {0}: {1}", typeEl.Name, typeEl.Value);
+                        //Console.WriteLine("    {0}: {1}", typeEl.Name, typeEl.Value);
 
                         var idEl = entityEl.Element("id");
-                        Console.WriteLine("    {0}: {1}", idEl.Name, idEl.Value);
+                        //Console.WriteLine("    {0}: {1}", idEl.Name, idEl.Value);
 
                         var actionEl = entityEl.Element("action");
-                        Console.WriteLine("    {0}: {1}", actionEl.Name, actionEl.Value);
+                        //Console.WriteLine("    {0}: {1}", actionEl.Name, actionEl.Value);
 
                         var fieldsEl = entityEl.Element("fields");
+
+                        IList<NsiElementField> lData = new List<NsiElementField>();
 
                         //выводим в цикле названия всех дочерних элементов и их значения
                         foreach (XElement fieldEl in fieldsEl.Elements("field"))
                         {
                             var nameEl = fieldEl.Element("name");
                             var valueEl = fieldEl.Element("value");
-                            Console.WriteLine("        {0}: {1}", nameEl.Name, nameEl.Value);
-                            Console.WriteLine("        {0}: {1}", valueEl.Name, valueEl.Value);
+                            //Console.WriteLine("        {0}: {1}", nameEl.Name, nameEl.Value);
+                            //Console.WriteLine("        {0}: {1}", valueEl.Name, valueEl.Value);
                             lData.Add(new NsiElementField(nameEl.Value, valueEl.Value));
                         }
+
+                        lEntity.Add(new NsiEntityField(typeEl.Value, actionEl.Value, idEl.Value, lData));
                     }
                 }
             }
@@ -58,7 +62,7 @@ namespace NsiTest.Tests
                 Console.WriteLine(e.StackTrace);
                 Assert.True(false, "Error load data from xml");
             }
-            return lData;
+            return lEntity;
         }
     }
 

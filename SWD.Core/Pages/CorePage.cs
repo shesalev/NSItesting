@@ -14,6 +14,8 @@ namespace Swd.Core.Pages
         public CorePage()
         {
             Console.WriteLine("CorePage");
+            Console.WriteLine(Driver.Title);
+
             PageFactory.InitElements(Driver, this);
         }
 
@@ -27,14 +29,31 @@ namespace Swd.Core.Pages
             return Driver.FindElement(pSelector);
         }
 
+        public IWebElement FindElementBy(By pSelector)
+        {
+            return Driver.FindElementBy(pSelector);
+        }
+
+        public bool FastVisibleElement(By pSelector)
+        {
+            return Driver.FastVisibleElement(pSelector);
+        }
+
         public ReadOnlyCollection<IWebElement> FindElements(By pSelector)
         {
             return Driver.FindElements(pSelector);
         }
 
+
         public IWebElement FindElementsFirstVisible(By pSelector)
         {
-            return FindElements(pSelector).GetFirstVisible();
+            return Driver.GetVisibleElements(pSelector).GetFirstVisible();
+            //return FindElements(pSelector).GetFirstVisible();
+        }
+
+        public IWebElement GetEditViewEntityBtn(string pValue)
+        {
+            return FindElementsFirstVisible(By.XPath(".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]"));
         }
 
         public IWebDriver SwitchToModal(By by)
