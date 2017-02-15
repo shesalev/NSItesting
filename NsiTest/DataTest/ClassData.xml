@@ -27,13 +27,9 @@
     </entity>
     <entity>
       <type>class</type>
-      <id>lastAdd</id>
+      <id>100061273</id>
       <action>edit</action>
       <fields>
-        <field>
-          <name>P31_PARENT_CLASS_ID</name>
-          <value>100061273</value>
-        </field>
         <field>
           <name>P31_CLASS_NAME</name>
           <value>test1</value>
