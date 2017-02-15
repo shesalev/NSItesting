@@ -33,10 +33,10 @@ namespace NsiTest.Pages.NoModalPage
         {
             IWebElement lSelectRow = GetEditViewEntityBtn(pValue);
 
-            if (lSelectRow != null)
-            {
+            //if (lSelectRow != null)
+            //{
                 lSelectRow.Click();
-            }
+            //}
         }
 
         public String GetLastAddEntityId()

@@ -25,8 +25,6 @@ namespace NsiTest.Pages.NoModalPage
 
         public void clkEditViewClassModal(string entityId)
         {
-            //waitLoader();
-            //$$(By.cssSelector(".edit_view_modal")).findBy(Condition.attribute("value", class_id)).shouldBe(Condition.visible).click();
             ClickEditViewModalByValue(entityId);
         }
 

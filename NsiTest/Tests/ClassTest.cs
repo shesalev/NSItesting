@@ -19,8 +19,8 @@ namespace NsiTest.Tests
 
         public override void setPosition(String p_entity_id)
         {
+            this.EntityId = p_entity_id;
             PositionEntityAction.setPosition(p_entity_id);
-            //classTabPage.SearchByIdGuid(p_entity_id);
         }
 
         override
@@ -68,22 +68,19 @@ namespace NsiTest.Tests
             return defaultModalPage;
         }
 
-        override
-        public void Edit(IList<NsiElementField> pFieldsList)
+        public override void Edit(IList<NsiElementField> pFieldsList)
         {
             OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Edit();
 
             //classPage.CheckSuccessMess();
         }
 
-        override
-        public void Repair(IList<NsiElementField> pFieldsList)
+        public override void Repair(IList<NsiElementField> pFieldsList)
         {
             OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Repair();
         }
 
-        override
-        public void Delete()
+        public override void Delete()
         {
             OpenAndFillModal(classTabPage, this.EntityId, new List<NsiElementField>()).Delete();
 

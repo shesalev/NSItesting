@@ -1,8 +1,7 @@
 ﻿using System;
-using NsiTest.Pages.NoModalPage;
+using OpenQA.Selenium;
 using Swd.Core.WebDriver;
 using NsiTest.Exceptions;
-using OpenQA.Selenium;
 using NsiTest.Pages.ModalPage;
 
 namespace NsiTest.Tests.Positions
@@ -14,9 +13,9 @@ namespace NsiTest.Tests.Positions
 
             //pEntityPage.SearchByIdGuid(pEntityId);
 
-            IWebElement editBtn = SwdBrowser.Driver.GetFirstVisible(By.XPath(".//a[@value='" + pEntityId + "' and contains(@class,'edit_view_modal')]"));           
+            //IWebElement editBtn = ;           
 
-            if (editBtn == null)
+            if (!SwdBrowser.Driver.FastVisibleElement(By.XPath(".//a[@value='" + pEntityId + "' and contains(@class,'edit_view_modal')]")))
             {
                 try
                 {

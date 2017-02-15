@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OpenQA.Selenium.Support;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System.Diagnostics;
 
 namespace Swd.Core.WebDriver
 {
@@ -18,7 +14,7 @@ namespace Swd.Core.WebDriver
         /// <summary>
         /// Default timeout for <see cref=" WaitUntilVisible"/> methods
         /// </summary>
-        public static int DefaultTimeOutMilliseconds = 8000;
+        public static int DefaultTimeOutMilliseconds = 15000;
 
         /// <summary>
         /// Waits until element is visible. Internally, uses element.Displayed with ignored WebDriver exceptions
@@ -79,7 +75,7 @@ namespace Swd.Core.WebDriver
             {
                 Wait.UntilVisible(by, driver, TimeSpan.FromMilliseconds(200));
             }
-            catch (/*OpenQA.Selenium.NoSuchElementException*/Exception e)
+            catch (Exception e)
             {
                 res = false;
             }
@@ -95,7 +91,7 @@ namespace Swd.Core.WebDriver
 
         public static IWebElement FindElementBy(this IWebDriver driver, By by)
         {
-            return Wait.UntilVisible(by, driver, TimeSpan.FromSeconds(10));
+            return Wait.UntilVisible(by, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
         }
 
         /// <summary>
@@ -138,11 +134,10 @@ namespace Swd.Core.WebDriver
             }
             catch (Exception e)
             {
-
                 // Empty; Ignored
             }
             return result;
-        }
+        }        
 
         /// <summary>
         /// Gets a value indicating whether or not this element is displayed.  
@@ -150,26 +145,9 @@ namespace Swd.Core.WebDriver
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static IWebElement GetFirstVisible(this IList<IWebElement> elements)
-        {
-            IWebElement result = null;
-
-            foreach (IWebElement element in elements)
-            {
-                element.WaitUntilVisible(200);
-                //element
-                if (element.IsDisplayedSafe())
-                {
-                    return element;
-                }
-            }
-
-            return result;
-        }
-
         public static IList<IWebElement> GetVisibleElements(this IWebDriver driver, By by)
         {
-            return Wait.UntilListVisible(by, driver, TimeSpan.FromSeconds(10));
+            return Wait.UntilListVisible(by, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
         }
 
         public static IWebElement GetFirstVisible(this IWebDriver driver, By by)
@@ -181,7 +159,7 @@ namespace Swd.Core.WebDriver
                 foreach (IWebElement element in elements)
                 {
                     element.WaitUntilVisible(200);
-                    //element
+
                     if (element.IsDisplayedSafe())
                     {
                         return element;
@@ -191,10 +169,9 @@ namespace Swd.Core.WebDriver
             }
             catch (Exception e)
             {
+                // Empty; Ignored
                 return null;
             }
-
-
         }
 
         /// <summary>
@@ -202,32 +179,17 @@ namespace Swd.Core.WebDriver
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public static IWebElement ClickWait(this IWebElement btn)
+        public static IWebElement ClickWait(this IWebElement element)
         {
-            btn.WaitUntilVisible(TimeSpan.FromSeconds(10));
+            element.WaitUntilVisible(TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
 
-            btn.Click();
-            return btn;
-        }
+            element.Click();
+            return element;
+        }        
 
         /// <summary>
-        /// Waits until element is visible and click it
+        /// Get parent of element
         /// </summary>
-        /// <param name="btn"></param>
-        /// <param name="timeOut"></param>
-        /// <returns></returns>
-        public static IWebElement ClickWait(this IWebElement btn, TimeSpan timeOut)
-        {
-            btn.WaitUntilVisible(timeOut);
-            btn.Click();
-            return btn;
-        }
-
-        /// <summary>
-        /// Waits until element is visible and click it
-        /// </summary>
-        /// <param name="btn"></param>
-        /// <param name="timeOut"></param>
         /// <returns></returns>
         public static IWebElement GetPatent(this IWebElement element)
         {

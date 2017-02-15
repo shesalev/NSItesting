@@ -82,14 +82,18 @@ namespace NsiTest
         {
             Console.WriteLine("Start Class test");
 
-            var lEntityList = LoadData.GetData("ClassData2.xml");
+            // Load test data
+            var lEntityList = LoadData.GetData("ClassData.xml");
+
 
             if (lEntityList.Count > 0)
             {
+                // Enter to request
                 EnterToRequest("4248");
-                
+
                 string lastId = "";
-                
+
+
                 foreach (NsiEntityField lEntity in lEntityList)
                 {
                     var lId = lEntity.Id;
@@ -98,48 +102,35 @@ namespace NsiTest
                     {
                         if (lastId.Length == 0)
                         {
-                        Console.WriteLine("Skip test "+ lEntity.ToString());
+                            Console.WriteLine("Skip test " + lEntity.ToString());
                             continue;
                         }
                         lId = lastId;
                     }
 
-                    //if (lEntity.Type.Equals("class"))
-                    //{
+                    // Get test entity
                     EntityTest entityTest = new ClassTest(/*lId, lEntity.Fields*/);
-                    Console.WriteLine("lId: " + lId);
-                    //}
 
+                    Console.WriteLine("Test entity " + lEntity.ToString());
+
+                    // Do test action
                     if (lEntity.Action.Equals("add"))
                     {
-                        Console.WriteLine("Action: add == " + lEntity.Action);
-
                         entityTest.setPosition();
-                        //Console.WriteLine("lEntity.Fields count: " + lEntity.Fields.Count);
-
                         lastId = entityTest.Add(lEntity.Fields);
                     }
                     else if (lEntity.Action.Equals("edit"))
                     {
-                        //entityTest = new ClassTest(lastId, lFieldsList);
-                        Console.WriteLine("Action: edit == " + lEntity.Action);
-
                         entityTest.setPosition(lId);
                         entityTest.Edit(lEntity.Fields);
                     }
                     else if (lEntity.Action.Equals("delete"))
                     {
-                        //entityTest = new ClassTest(lastId, lFieldsList);
-                        Console.WriteLine("Action: delete == " + lEntity.Action);
-
                         entityTest.setPosition(lId);
                         entityTest.Delete();
                     }
                     else if (lEntity.Action.Equals("repair"))
                     {
-                        //entityTest = new ClassTest(lastId, lFieldsList);
-                        Console.WriteLine("Action: repair == " + lEntity.Action);
-
                         entityTest.setPosition(lId);
                         entityTest.Repair(lEntity.Fields);
                     }
