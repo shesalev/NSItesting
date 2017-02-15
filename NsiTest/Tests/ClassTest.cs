@@ -11,7 +11,7 @@ namespace NsiTest.Tests
     public class ClassTest : EntityTest
     {
         private ClassTabPage classTabPage;
-        public ClassTest(string pEntityId, IList<NsiElementField> pFieldsList) : base(pEntityId, pFieldsList)
+        public ClassTest(/*string pEntityId, IList<NsiElementField> pFieldsList*/) : base(/*pEntityId, pFieldsList*/)
         {
             this.classTabPage = new ClassTabPage();
             base.setPositionPageAction(new PositionPageClass());
@@ -19,8 +19,8 @@ namespace NsiTest.Tests
 
         public override void setPosition(String p_entity_id)
         {
-            //PositionEntityAction.setPosition(classTabPage, p_entity_id);
-            classTabPage.SearchByIdGuid(p_entity_id);
+            PositionEntityAction.setPosition(p_entity_id);
+            //classTabPage.SearchByIdGuid(p_entity_id);
         }
 
         override

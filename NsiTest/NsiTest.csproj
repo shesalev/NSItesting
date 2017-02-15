@@ -81,6 +81,8 @@
     <Compile Include="AllTest.cs" />
     <Compile Include="Elements\ErrorPageMessage.cs" />
     <Compile Include="Elements\NsiNullElement.cs" />
+    <Compile Include="Elements\NsiSelectList.cs" />
+    <Compile Include="Elements\NsiSuperLov.cs" />
     <Compile Include="Exceptions\GlobalSearchPageError.cs" />
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
@@ -129,6 +131,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataTest\ClassData2.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataTest\ClassData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

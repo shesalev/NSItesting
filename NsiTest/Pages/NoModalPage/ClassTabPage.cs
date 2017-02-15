@@ -35,7 +35,7 @@ namespace NsiTest.Pages.NoModalPage
             //$(By.id("classesTree-id-0")).shouldBe(Condition.visible).click();
             //    waitLoader();
             //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
-            addClassBtn.WaitUntilVisible();
+            addClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(2));
             addClassBtn.Click();
         }
 

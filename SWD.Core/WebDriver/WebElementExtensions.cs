@@ -61,6 +61,14 @@ namespace Swd.Core.WebDriver
         /// <summary>
         /// Waits until frame is visible and switch to it
         /// </summary>
+        public static IAlert UntilAlert(this IWebDriver driver)
+        {
+            return Wait.UntilAlert(driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
+        }
+
+        /// <summary>
+        /// Waits until frame is visible and switch to it
+        /// </summary>
         public static bool FastVisibleElement(this IWebDriver driver, By by)
         {
             //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(200));
@@ -164,6 +172,31 @@ namespace Swd.Core.WebDriver
             return Wait.UntilListVisible(by, driver, TimeSpan.FromSeconds(10));
         }
 
+        public static IWebElement GetFirstVisible(this IWebDriver driver, By by)
+        {
+            try
+            {
+                IList<IWebElement> elements = driver.GetVisibleElements(by);
+
+                foreach (IWebElement element in elements)
+                {
+                    element.WaitUntilVisible(200);
+                    //element
+                    if (element.IsDisplayedSafe())
+                    {
+                        return element;
+                    }
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+
+        }
+
         /// <summary>
         /// Waits until element is visible and click it
         /// </summary>
@@ -189,5 +222,17 @@ namespace Swd.Core.WebDriver
             btn.Click();
             return btn;
         }
+
+        /// <summary>
+        /// Waits until element is visible and click it
+        /// </summary>
+        /// <param name="btn"></param>
+        /// <param name="timeOut"></param>
+        /// <returns></returns>
+        public static IWebElement GetPatent(this IWebElement element)
+        {
+            return element.FindElement(By.XPath(".."));
+        }
+
     }
 }

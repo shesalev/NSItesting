@@ -11,9 +11,8 @@ namespace NsiTest.Elements
     public class NsiInput : NsiElement
     {
         public NsiInput(IWebElement pElement): base(pElement){}
-
-        override
-        public void setValue(String pValue)
+        
+        public override void setValue(String pValue)
         {
             Element.Clear();
             Element.SendKeys(pValue);

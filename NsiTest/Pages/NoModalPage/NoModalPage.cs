@@ -33,7 +33,10 @@ namespace NsiTest.Pages.NoModalPage
         {
             IWebElement lSelectRow = GetEditViewEntityBtn(pValue);
 
-            lSelectRow.ClickWait();
+            if (lSelectRow != null)
+            {
+                lSelectRow.Click();
+            }
         }
 
         public String GetLastAddEntityId()
@@ -51,27 +54,22 @@ namespace NsiTest.Pages.NoModalPage
         }
 
         // Open modal search form on any no modal page
-        public void globalOpenSearch(String idGuid)
-        {
-            try
-            {
-                //IJavaScriptExecutor js = Driver as IJavaScriptExecutor;
-                //string title = (string)js.ExecuteScript("$.event.trigger('open_search'," + idGuid + ");");
-                SwdBrowser.ExecuteScript("$.event.trigger('open_search','" + idGuid + "');");
-            }
-            catch (Exception e)
-            {
-                throw new GlobalSearchPageError("Open global search error: " + e.Message);
-            }
-        }
-
         public void SearchByIdGuid(String idGuid)
         {
             IWebElement editBtn = GetEditViewEntityBtn(idGuid);
 
             if (editBtn == null)
             {
-                globalOpenSearch(idGuid);
+                try
+                {
+                    //IJavaScriptExecutor js = Driver as IJavaScriptExecutor;
+                    //string title = (string)js.ExecuteScript("$.event.trigger('open_search'," + idGuid + ");");
+                    SwdBrowser.ExecuteScript("$.event.trigger('open_search','" + idGuid + "');");
+                }
+                catch (Exception e)
+                {
+                    throw new GlobalSearchPageError("Open global search error: " + e.Message);
+                }
 
                 SearchModalPage searchModalPage = new SearchModalPage();
 

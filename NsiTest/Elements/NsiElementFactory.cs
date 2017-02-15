@@ -15,14 +15,14 @@ namespace NsiTest.Elements
             {
                 nsiElement = new NsiInput(lInput);
             }
-            //else if (NsiElement.hasClass(lInput, "modal_window_select"))
-            //{
-            //    nsiElement = new NsiSelectList(lInput);
-            //}
-            //else if (NsiElement.hasClass(lInput, "superlov-input"))
-            //{
-            //    nsiElement = new NsiSuperLov(lInput);
-            //}
+            else if (NsiElement.hasClass(lInput, "modal_window_select"))
+            {
+                nsiElement = new NsiSelectList(lInput);
+            }
+            else if (NsiElement.hasClass(lInput, "superlov-input"))
+            {
+                nsiElement = new NsiSuperLov(lInput);
+            }
             else
             {
                 nsiElement = new NsiNullElement(lInput);

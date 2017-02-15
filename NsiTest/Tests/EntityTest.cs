@@ -17,10 +17,10 @@ namespace NsiTest.Tests
         protected PositionPageAction positionPageAction;
         //protected PositionEntityAction positionEntityAction;
 
-        public EntityTest(string pEntityId, IList<NsiElementField> pFieldsList)
+        public EntityTest(/*string pEntityId, IList<NsiElementField> pFieldsList*/)
         {
-            this.EntityId = pEntityId;
-            this.fieldsList = pFieldsList;
+            //this.EntityId = pEntityId;
+            //this.fieldsList = pFieldsList;
         }
 
         // Установка объекта позиции

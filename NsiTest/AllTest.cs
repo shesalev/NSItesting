@@ -82,29 +82,23 @@ namespace NsiTest
         {
             Console.WriteLine("Start Class test");
 
-            var lEntityList = LoadData.GetData("ClassData.xml");
+            var lEntityList = LoadData.GetData("ClassData2.xml");
 
             if (lEntityList.Count > 0)
             {
                 EnterToRequest("4248");
-
-                EntityTest entityTest;
+                
                 string lastId = "";
-                Console.WriteLine("**************");
-                Console.WriteLine("lEntityList count: " + lEntityList.Count);
-
+                
                 foreach (NsiEntityField lEntity in lEntityList)
                 {
-                    Console.WriteLine("**************");
-                    Console.WriteLine(lEntity.Type);
-                    Console.WriteLine(lEntity.Id);
-                    Console.WriteLine(lEntity.Action);
                     var lId = lEntity.Id;
 
                     if (lId.Equals("lastadd"))
                     {
-                        if (lastId.Length < 0)
+                        if (lastId.Length == 0)
                         {
+                        Console.WriteLine("Skip test "+ lEntity.ToString());
                             continue;
                         }
                         lId = lastId;
@@ -112,7 +106,7 @@ namespace NsiTest
 
                     //if (lEntity.Type.Equals("class"))
                     //{
-                    entityTest = new ClassTest(lId, lEntity.Fields);
+                    EntityTest entityTest = new ClassTest(/*lId, lEntity.Fields*/);
                     Console.WriteLine("lId: " + lId);
                     //}
 
@@ -137,9 +131,17 @@ namespace NsiTest
                     {
                         //entityTest = new ClassTest(lastId, lFieldsList);
                         Console.WriteLine("Action: delete == " + lEntity.Action);
-                    
+
                         entityTest.setPosition(lId);
                         entityTest.Delete();
+                    }
+                    else if (lEntity.Action.Equals("repair"))
+                    {
+                        //entityTest = new ClassTest(lastId, lFieldsList);
+                        Console.WriteLine("Action: repair == " + lEntity.Action);
+
+                        entityTest.setPosition(lId);
+                        entityTest.Repair(lEntity.Fields);
                     }
                     else
                     {

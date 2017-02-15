@@ -23,5 +23,11 @@ namespace NsiTest.Fields
         public string Id { get; private set; }
 
         public IList<NsiElementField> Fields { get; private set; }
+
+        public override string ToString()
+        {
+            var txt = "Entity Type: " + this.Type + ", Action: " + this.Action + ", Id: " + this.Id + ", Fields count:" + this.Fields.Count;
+            return txt;
+        }
     }
 }

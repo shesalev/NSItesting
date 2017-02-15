@@ -47,7 +47,7 @@ namespace Swd.Core.Pages
 
         public IWebElement FindElementsFirstVisible(By pSelector)
         {
-            return Driver.GetVisibleElements(pSelector).GetFirstVisible();
+            return Driver.GetFirstVisible(pSelector);
             //return FindElements(pSelector).GetFirstVisible();
         }
 
@@ -56,9 +56,9 @@ namespace Swd.Core.Pages
             return FindElementsFirstVisible(By.XPath(".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]"));
         }
 
-        public IWebDriver SwitchToModal(By by)
+        public IWebDriver SwitchToModal(By pSelector)
         {
-            IWebElement frameElem = FindElementsFirstVisible(by);
+            IWebElement frameElem = Driver.GetVisibleElements(pSelector).GetFirstVisible();
             return Driver.UntilFrameToBeAvailableAndSwitchToIt(frameElem.GetAttribute("name"));
         }
 
@@ -68,8 +68,8 @@ namespace Swd.Core.Pages
         }
 
         public void AcceptAlert()
-        {
-            IAlert lAlert = Driver.SwitchTo().Alert();
+        {            
+            IAlert lAlert = Driver.UntilAlert();;
             lAlert.Accept();
         }
     }
