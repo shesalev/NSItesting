@@ -8,14 +8,12 @@ namespace NsiTest.Tests.Positions
 {
     public static class PositionEntityAction
     {
+        public static string GetEditViewBtnSelector(string pValue)
+        {
+            return ".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]";
+        }
         public static void setPosition(string pEntityId) {
-            Console.WriteLine("Go to entity");
-
-            //pEntityPage.SearchByIdGuid(pEntityId);
-
-            //IWebElement editBtn = ;           
-
-            if (!SwdBrowser.Driver.FastVisibleElement(By.XPath(".//a[@value='" + pEntityId + "' and contains(@class,'edit_view_modal')]")))
+            if (!SwdBrowser.Driver.FastVisibleElement(By.XPath(GetEditViewBtnSelector(pEntityId))))
             {
                 try
                 {

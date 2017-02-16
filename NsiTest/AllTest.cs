@@ -93,7 +93,6 @@ namespace NsiTest
 
                 string lastId = "";
 
-
                 foreach (NsiEntityField lEntity in lEntityList)
                 {
                     var lId = lEntity.Id;

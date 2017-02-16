@@ -8,6 +8,7 @@ using NsiTest.Elements;
 using NsiTest.Exceptions;
 using NsiTest.Pages.ModalPage;
 using NsiTest.Fields;
+using NsiTest.Tests.Positions;
 
 namespace NsiTest.Pages.NoModalPage
 {
@@ -28,15 +29,15 @@ namespace NsiTest.Pages.NoModalPage
             return true;
         }
 
+        public IWebElement GetEditViewEntityBtn(string pValue)
+        {
+            return FindElementBy(By.XPath(PositionEntityAction.GetEditViewBtnSelector(pValue)));
+        }
 
         public void ClickEditViewModalByValue(String pValue)
         {
             IWebElement lSelectRow = GetEditViewEntityBtn(pValue);
-
-            //if (lSelectRow != null)
-            //{
-                lSelectRow.Click();
-            //}
+            lSelectRow.Click();
         }
 
         public String GetLastAddEntityId()
@@ -50,7 +51,7 @@ namespace NsiTest.Pages.NoModalPage
         {
             Console.WriteLine("CheckSuccessMess");
             Console.WriteLine(GetTitle());
-            FindElement(By.Id("uSuccessMessage")).WaitUntilVisible();
+            FindElementBy(By.Id("uSuccessMessage")).WaitUntilVisible();
         }
 
         // Open modal search form on any no modal page

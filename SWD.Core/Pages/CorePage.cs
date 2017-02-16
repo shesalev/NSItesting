@@ -49,12 +49,7 @@ namespace Swd.Core.Pages
         {
             return Driver.GetFirstVisible(pSelector);
             //return FindElements(pSelector).GetFirstVisible();
-        }
-
-        public IWebElement GetEditViewEntityBtn(string pValue)
-        {
-            return Driver.FindElementBy(By.XPath(".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]"));
-        }
+        }        
 
         public IWebDriver SwitchToModal(By pSelector)
         {

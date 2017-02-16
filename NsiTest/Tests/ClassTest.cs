@@ -36,20 +36,15 @@ namespace NsiTest.Tests
             defaultModalPage.FillForm(pFieldsList);
             defaultModalPage.Add();
 
-            Console.Write("");
-
-            // TODO: Edit page 30 by action "Add class"
-            //classPage.CheckSuccessMess();
-
+            // Get last add id
             l_class_id = classTabPage.GetLastAddEntityId();
 
             this.EntityId = l_class_id;
 
+            // Go to added class
             setPosition(l_class_id);
 
             //classPage.chkAddIcon(l_class_id);
-
-            classTabPage.clkEditViewClassModal(l_class_id);
 
             return l_class_id;
 
