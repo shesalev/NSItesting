@@ -10,8 +10,13 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""addClassBtn"")")]
         public IWebElement addClassBtn { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""addClassBtn"")")]
-        public IWebElement EditViewBtn { get; set; }
+        [FindsBy(How = How.XPath, Using = @"id(""addAttributeBtn"")")]
+        public IWebElement addAttrClassBtn { get; set; }
+
+        // class tabs
+        [FindsBy(How = How.XPath, Using = @"id(""tab_01"")")]
+        public IWebElement AttrClassTab { get; set; }
+
 
         //public boolean selectedClass(String class_id)
         //{
@@ -35,6 +40,42 @@ namespace NsiTest.Pages.NoModalPage
             //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
             addClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             addClassBtn.Click();
+        }
+
+        public void clkCreateAttributeClassModal()
+        {
+            //$(By.id("classesTree-id-0")).shouldBe(Condition.visible).click();
+            //    waitLoader();
+            //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
+            addAttrClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            addAttrClassBtn.Click();
+        }
+
+        public void selectClassInTree(string pId)
+        {
+            FindElementBy(By.Id("classesTree-id-111"));
+            try
+            {
+                var obj = ExecuteScript("$('#classesTree').fancytree('getTree').getNodeByKey('" + pId + "').setActive();");
+                Console.WriteLine(obj.ToString());
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e);
+            }
+
+            //SwdBrowser.HandleJavaScriptErrors();
+
+            FindElementBy(By.Id("classesTree-id-" + pId));
+
+            //FindElementBy(By.XPath(".//table[@class='apexir_WORKSHEET_DATA']/tbody/tr/td/a[@value='" + pValue + "']"));
+        }
+
+        public void clkAttrClassTab()
+        {
+            AttrClassTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            AttrClassTab.Click();
         }
 
         //public void clkCreateConnectorModal()

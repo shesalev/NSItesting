@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suit>
+  <request_id>4248</request_id>
+  <entitys>
+    <!--String attribute-->
+    <entity>
+      <type>attrclass</type>
+      <id></id>
+      <patentid>110360381</patentid>
+      <action>add</action>
+      <fields>
+        <field>
+          <name>P33_NAME</name>
+          <value>test string attr</value>
+        </field>
+        <field>
+          <name>P33_DESCRIPTION</name>
+          <value>test attr description</value>
+        </field>
+        <field>
+          <name>P33_MANDATORY</name>
+          <value>0</value>
+        </field>
+        <field>
+          <name>P33_VALUE_TYPE_ID</name>
+          <value>1</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>attrclass</type>
+      <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P33_DESCRIPTION</name>
+          <value>test attr description edit</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>attrclass</type>
+      <id>lastAdd</id>
+      <action>delete</action>
+      <fields>
+      </fields>
+    </entity>
+
+    <!--Number attribute-->
+    <entity>
+      <type>attrclass</type>
+      <id></id>
+      <patentid>110360381</patentid>
+      <action>add</action>
+      <fields>
+        <field>
+          <name>P33_NAME</name>
+          <value>test number attr</value>
+        </field>
+        <field>
+          <name>P33_DESCRIPTION</name>
+          <value>test number attr description</value>
+        </field>
+        <field>
+          <name>P33_MANDATORY</name>
+          <value>0</value>
+        </field>
+        <field>
+          <name>P33_VALUE_TYPE_ID</name>
+          <value>2</value>
+        </field>
+        <field>
+          <name>P33_UNIT_ID</name>
+          <value>101268004</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>attrclass</type>
+      <id>lastAdd</id>
+      <action>delete</action>
+      <fields>
+      </fields>
+    </entity>
+  </entitys>
+</suit>

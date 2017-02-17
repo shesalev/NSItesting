@@ -83,17 +83,18 @@ namespace NsiTest
             Console.WriteLine("Start Class test");
 
             // Load test data
-            var lEntityList = LoadData.GetData("ClassData.xml");
+            var lNsiEntityList = LoadData.GetData("AttrClassData.xml");
 
+            //var lNsiEntityList = LoadData.GetData("ClassData.xml");
 
-            if (lEntityList.Count > 0)
+            if (lNsiEntityList.Count > 0)
             {
                 // Enter to request
                 EnterToRequest("4248");
 
                 string lastId = "";
 
-                foreach (NsiEntityField lEntity in lEntityList)
+                foreach (NsiEntity lEntity in lNsiEntityList)
                 {
                     var lId = lEntity.Id;
 
@@ -107,54 +108,14 @@ namespace NsiTest
                         lId = lastId;
                     }
 
-                    // Get test entity
-                    EntityTest entityTest = new ClassTest(/*lId, lEntity.Fields*/);
+                    EntityTestFactory entityTestFactory = new EntityTestFactory();
 
-                    Console.WriteLine("Test entity " + lEntity.ToString());
+                    string lLastId = entityTestFactory.Test(lEntity, lId);
 
-                    // Do test action
-                    if (lEntity.Action.Equals("add"))
+                    if (lLastId.Length > 0)
                     {
-                        entityTest.setPosition();
-                        lastId = entityTest.Add(lEntity.Fields);
-                    }
-                    else if (lEntity.Action.Equals("edit"))
-                    {
-                        entityTest.setPosition(lId);
-                        entityTest.Edit(lEntity.Fields);
-                    }
-                    else if (lEntity.Action.Equals("delete"))
-                    {
-                        entityTest.setPosition(lId);
-                        entityTest.Delete();
-                    }
-                    else if (lEntity.Action.Equals("repair"))
-                    {
-                        entityTest.setPosition(lId);
-                        entityTest.Repair(lEntity.Fields);
-                    }
-                    else
-                    {
-
-                    }
-
-                    //}
-                    //catch (PageError e)
-                    //{
-                    //    Console.WriteLine(e.StackTrace);
-                    //    Assert.Fail(e.Message + "/n" + e.StackTrace);
-                    //}
-                    //catch (TitleError e)
-                    //{
-                    //    //Console.WriteLine("Error login into application:");
-                    //    Console.WriteLine(e.StackTrace);
-                    //    Assert.Fail(e.Message + "/n" + e.StackTrace);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Console.WriteLine(e.StackTrace);
-                    //    Assert.Fail(e.Message + "/n" + e.StackTrace);
-                    //}
+                        lastId = lLastId;
+                    }                    
                 }
             }
             else

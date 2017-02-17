@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using NsiTest.Tests.Positions;
 using NsiTest.Fields;
-using NsiTest.Pages.NoModalPage;
-using NsiTest.Pages.ModalPage;
 
 namespace NsiTest.Tests
 {
     public abstract class EntityTest
     {
-        ////protected NoModalPage EntityPage;
+        //protected NoModalPage EntityPage;
         protected string EntityId;
+        protected string EntityPatentId;
         protected IList<NsiElementField> fieldsList;
 
         protected PositionPageAction positionPageAction;

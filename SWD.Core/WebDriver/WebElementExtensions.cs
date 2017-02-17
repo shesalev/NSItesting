@@ -67,21 +67,18 @@ namespace Swd.Core.WebDriver
         /// </summary>
         public static bool FastVisibleElement(this IWebDriver driver, By by)
         {
-            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(200));
-            //IWebElement lElement = driver.FindElement(by);
-            //driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
             var res = true;
             try
             {
-                Wait.UntilVisible(by, driver, TimeSpan.FromMilliseconds(200));
+                //Wait.UntilVisible(by, driver, TimeSpan.FromMilliseconds(300));
+                driver.FindElement(by);
             }
             catch (Exception e)
             {
+                Console.WriteLine("FastVisibleElement error: " + e.Message);
                 res = false;
             }
             return res;
-            //return lElement;
-            //return Wait.UntilFrameToBeAvailableAndSwitchToIt(by, driver, TimeSpan.FromMilliseconds(DefaultTimeOutMilliseconds));
         }
 
         public static IWebElement FindElementBy(this IWebDriver driver, By by, TimeSpan timeOut)
@@ -137,7 +134,7 @@ namespace Swd.Core.WebDriver
                 // Empty; Ignored
             }
             return result;
-        }        
+        }
 
         /// <summary>
         /// Gets a value indicating whether or not this element is displayed.  
@@ -152,26 +149,29 @@ namespace Swd.Core.WebDriver
 
         public static IWebElement GetFirstVisible(this IWebDriver driver, By by)
         {
-            try
-            {
-                IList<IWebElement> elements = driver.GetVisibleElements(by);
 
-                foreach (IWebElement element in elements)
+            //IList<IWebElement> elements = driver.GetVisibleElements(by);
+            IList<IWebElement> elements = driver.FindElements(by);
+
+            foreach (IWebElement element in elements)
+            {
+                try
                 {
                     element.WaitUntilVisible(200);
-
                     if (element.IsDisplayedSafe())
                     {
                         return element;
                     }
                 }
-                return null;
+                catch (Exception e)
+                {
+                    // Empty; Ignored
+                    //return null;
+                }
             }
-            catch (Exception e)
-            {
-                // Empty; Ignored
-                return null;
-            }
+            return null;
+
+
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Swd.Core.WebDriver
 
             element.Click();
             return element;
-        }        
+        }
 
         /// <summary>
         /// Get parent of element

@@ -13,6 +13,8 @@ namespace NsiTest.Tests.Positions
             return ".//a[@value='" + pValue + "' and contains(@class,'edit_view_modal')]";
         }
         public static void setPosition(string pEntityId) {
+            //Console.WriteLine("find entity by id = " + pEntityId);
+            //Console.WriteLine(SwdBrowser.Driver.FindElement(By.XPath(GetEditViewBtnSelector(pEntityId))).TagName);
             if (!SwdBrowser.Driver.FastVisibleElement(By.XPath(GetEditViewBtnSelector(pEntityId))))
             {
                 try
@@ -27,6 +29,8 @@ namespace NsiTest.Tests.Positions
                 }
 
                 SearchModalPage searchModalPage = new SearchModalPage();
+
+                searchModalPage.WaitLoading();
 
                 searchModalPage.clkRedirectBtn();
             }

@@ -31,7 +31,7 @@ namespace NsiTest.Pages.NoModalPage
 
         public IWebElement GetEditViewEntityBtn(string pValue)
         {
-            return FindElementBy(By.XPath(PositionEntityAction.GetEditViewBtnSelector(pValue)));
+            return FindElementsFirstVisible(By.XPath(PositionEntityAction.GetEditViewBtnSelector(pValue)));
         }
 
         public void ClickEditViewModalByValue(String pValue)

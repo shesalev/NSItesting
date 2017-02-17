@@ -14,7 +14,7 @@ namespace NsiTest.Pages.ModalPage
 
         [FindsBy(How = How.XPath, Using = @"id(""P4_GUID_SEARCH"")")]
         private IWebElement GUIdSearchBtn { get; set; }
-        
+
 
         // Search entity by id or guid
         public void searchEntity(String pGuidId)
@@ -23,22 +23,26 @@ namespace NsiTest.Pages.ModalPage
             GUIdInput.SendKeys(pGuidId);
 
             GUIdSearchBtn.Click();
-        }
+        }        
 
         public void clkRedirectBtn()
         {
-            //IWebElement lBtn = Driver.FindElements(By.CssSelector(".redirectBTN"));
-
-            IList<IWebElement> lBtns = FindElements(By.XPath(".//a[contains(@class,'redirectBTN')]"));
-            //Console.WriteLine("Count rows:" + lRowsList.Count());
+            //IList<IWebElement> lBtns = FindElements(By.XPath(".//a[contains(@class,'redirectBTN')]"));
 
             Console.WriteLine("clkRedirectBtn");
-            Console.WriteLine(lBtns.Count());
+            //Console.WriteLine(lBtns.Count());
 
-            var lBtn = lBtns.First();//[lBtns.Count() - 1];
-            Console.WriteLine(lBtn);
+            //var lBtn = lBtns.First();//[lBtns.Count() - 1];
+            //Console.WriteLine(lBtn.GetAttribute("id"));
 
-            lBtn.ClickWait();
+            //lBtn.Click();
+            var lBtn = FindElementsFirstVisible(By.XPath(".//a[contains(@class,'redirectBTN')]"));
+            //Console.WriteLine(lBtn.GetAttribute("id"));
+
+            //if (lBtn != null)
+            //{
+            lBtn.Click();
+            //}
         }
     }
 }

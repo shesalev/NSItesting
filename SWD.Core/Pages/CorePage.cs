@@ -49,7 +49,7 @@ namespace Swd.Core.Pages
         {
             return Driver.GetFirstVisible(pSelector);
             //return FindElements(pSelector).GetFirstVisible();
-        }        
+        }
 
         public IWebDriver SwitchToModal(By pSelector)
         {
@@ -63,9 +63,14 @@ namespace Swd.Core.Pages
         }
 
         public void AcceptAlert()
-        {            
-            IAlert lAlert = Driver.UntilAlert();;
+        {
+            IAlert lAlert = Driver.UntilAlert(); ;
             lAlert.Accept();
+        }
+
+        public object ExecuteScript(string jsCode)
+        {
+            return SwdBrowser.ExecuteScript(jsCode);
         }
     }
 }

@@ -89,6 +89,11 @@ namespace NsiTest.Pages.ModalPage
             RepairBtn.ClickWait();
             CheckErrorAndSwitchDefault();
         }
+
+        public void WaitLoading()
+        {
+            Wait.UntilNotVisible(By.Id("loadingIcon"), Driver, TimeSpan.FromSeconds(15));
+        }
     }
 
 }

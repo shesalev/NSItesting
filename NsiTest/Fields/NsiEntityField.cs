@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace NsiTest.Fields
 {
-    public class NsiEntityField
+    public class NsiEntity
     {
-        public NsiEntityField(string pType, string pAction, string pId, IList<NsiElementField> pFields)
+        public NsiEntity(string pType, string pAction, string pId,string pParentId, IList<NsiElementField> pFields)
         {
             Type = pType.ToLower();
             Action = pAction.ToLower();
             Id = pId.ToLower();
+            ParentId = pParentId.ToLower();
             Fields = pFields;
         }
 
@@ -21,6 +22,8 @@ namespace NsiTest.Fields
         public string Action { get; private set; }
 
         public string Id { get; private set; }
+
+        public string ParentId { get; private set; }
 
         public IList<NsiElementField> Fields { get; private set; }
 

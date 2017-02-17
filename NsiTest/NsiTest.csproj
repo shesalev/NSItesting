@@ -87,6 +87,8 @@
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
     <Compile Include="Fields\NsiEntityField.cs" />
+    <Compile Include="Tests\AttributeClassTest.cs" />
+    <Compile Include="Tests\EntityTestFactory.cs" />
     <Compile Include="Tests\LoadData.cs" />
     <Compile Include="Elements\InteractiveReport.cs" />
     <Compile Include="Elements\MainTabElement.cs" />
@@ -131,6 +133,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataTest\AttrClassData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataTest\ClassData2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

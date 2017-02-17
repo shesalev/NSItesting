@@ -8,59 +8,56 @@ namespace NsiTest.Tests
 {
     public static class LoadData
     {
-        public static IList<NsiEntityField> GetData(String pPathXMLFile)
+        public static string GetValueByTagName(XElement pEntityEl, string pTagName)
         {
-            IList<NsiEntityField> lEntity = new List<NsiEntityField>();
             try
             {
-                string currDir = Environment.CurrentDirectory.ToString();
-
-                XDocument lDoc = new XDocument(); //создаем класс XDocument
-
-                lDoc = XDocument.Load(currDir + "\\DataTest\\" + pPathXMLFile);
-
-                foreach (XElement suitEl in lDoc.Elements("suit"))
-                {
-                    var reqEl = suitEl.Element("request_id");
-                    Console.WriteLine("{0}: {1}", reqEl.Name, reqEl.Value);
-
-                    var entitysEl = suitEl.Element("entitys");
-
-                    //выводим в цикле названия всех дочерних элементов и их значения
-                    foreach (XElement entityEl in entitysEl.Elements("entity"))
-                    {
-                        var typeEl = entityEl.Element("type");
-                        //Console.WriteLine("    {0}: {1}", typeEl.Name, typeEl.Value);
-
-                        var idEl = entityEl.Element("id");
-                        //Console.WriteLine("    {0}: {1}", idEl.Name, idEl.Value);
-
-                        var actionEl = entityEl.Element("action");
-                        //Console.WriteLine("    {0}: {1}", actionEl.Name, actionEl.Value);
-
-                        var fieldsEl = entityEl.Element("fields");
-
-                        IList<NsiElementField> lData = new List<NsiElementField>();
-
-                        //выводим в цикле названия всех дочерних элементов и их значения
-                        foreach (XElement fieldEl in fieldsEl.Elements("field"))
-                        {
-                            var nameEl = fieldEl.Element("name");
-                            var valueEl = fieldEl.Element("value");
-                            //Console.WriteLine("        {0}: {1}", nameEl.Name, nameEl.Value);
-                            //Console.WriteLine("        {0}: {1}", valueEl.Name, valueEl.Value);
-                            lData.Add(new NsiElementField(nameEl.Value, valueEl.Value));
-                        }
-
-                        lEntity.Add(new NsiEntityField(typeEl.Value, actionEl.Value, idEl.Value, lData));
-                    }
-                }
-            }
-            catch (Exception e)
+                return pEntityEl.Element(pTagName).Value;
+            }catch(System.NullReferenceException e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
-                Assert.True(false, "Error load data from xml");
+                return "";
+            }
+        }
+
+        public static IList<NsiEntity> GetData(String pPathXMLFile)
+        {
+            XDocument lDoc = new XDocument(); //создаем класс XDocument
+
+            string currDir = Environment.CurrentDirectory.ToString();
+
+            lDoc = XDocument.Load(currDir + "\\DataTest\\" + pPathXMLFile);
+
+            var lEntity = new List<NsiEntity>();
+
+            foreach (XElement suitEl in lDoc.Elements("suit"))
+            {
+                var reqEl = suitEl.Element("request_id");
+                var entitysEl = suitEl.Element("entitys");
+
+                //выводим в цикле названия всех дочерних элементов и их значения
+                foreach (XElement entityEl in entitysEl.Elements("entity"))
+                {
+                    // Try get value from xml tags
+                    var typeVal = GetValueByTagName(entityEl, "type");
+                    var idVal = GetValueByTagName(entityEl, "id");
+                    var parentIdVal = GetValueByTagName(entityEl, "patentid");
+                    var actionVal = GetValueByTagName(entityEl, "action");
+
+                    // Get fields
+                    var fieldsEl = entityEl.Element("fields");
+
+                    var lData = new List<NsiElementField>();
+
+                    // Выводим в цикле названия всех дочерних элементов и их значения
+                    foreach (XElement fieldEl in fieldsEl.Elements("field"))
+                    {
+                        var nameEl = GetValueByTagName(fieldEl,"name");
+                        var valueEl = GetValueByTagName(fieldEl,"value");
+                        lData.Add(new NsiElementField(nameEl, valueEl));
+                    }
+
+                    lEntity.Add(new NsiEntity(typeVal, actionVal, idVal, parentIdVal, lData));
+                }
             }
             return lEntity;
         }

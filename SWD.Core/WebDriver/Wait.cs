@@ -11,6 +11,30 @@ namespace Swd.Core.WebDriver
 {
     public static class Wait
     {
+//        public static IWebElement UntilVisible(By by, IWebDriver driver, TimeSpan timeOut)
+//        {
+//        try
+//            {
+//                IList<IWebElement> elements = driver.GetVisibleElements(by);
+
+//                foreach (IWebElement element in elements)
+//                {
+//                    element.WaitUntilVisible(200);
+
+//                    if (element.IsDisplayedSafe())
+//                    {
+//                        return element;
+//                    }
+//}
+//                return null;
+//            }
+//            catch (Exception e)
+//            {
+//                // Empty; Ignored
+//                return null;
+//            }
+//        }
+
         public static IWebElement UntilVisible(IWebElement element, TimeSpan timeOut)
         {
             Stopwatch sw = new Stopwatch();
