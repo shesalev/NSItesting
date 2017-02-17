@@ -52,6 +52,7 @@ namespace NsiTest.Tests
 
         protected DefaultModalPage OpenAndFillModal(ClassTabPage pClassTabPage, string pEntity, IList<NsiElementField> pFieldsList)
         {
+            pClassTabPage.WaitLoading();
             // Open modal form
             pClassTabPage.clkEditViewClassModal(pEntity);
 

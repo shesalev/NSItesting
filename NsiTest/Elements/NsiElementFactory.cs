@@ -19,6 +19,10 @@ namespace NsiTest.Elements
             {
                 nsiElement = new NsiSelectList(lInput);
             }
+            else if (NsiElement.hasClass(lInput, "modal_window_id_list"))
+            {
+                nsiElement = new NsiIdList(lInput);
+            }
             else if (NsiElement.hasClass(lInput, "superlov-input"))
             {
                 nsiElement = new NsiSuperLov(lInput);

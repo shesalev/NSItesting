@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="AllTest.cs" />
     <Compile Include="Elements\ErrorPageMessage.cs" />
+    <Compile Include="Elements\NsiIdList.cs" />
     <Compile Include="Elements\NsiNullElement.cs" />
     <Compile Include="Elements\NsiSelectList.cs" />
     <Compile Include="Elements\NsiSuperLov.cs" />
@@ -134,6 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataTest\AttrClassData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataTest\ParamClassData.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

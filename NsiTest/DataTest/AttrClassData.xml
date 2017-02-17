@@ -73,6 +73,10 @@
           <name>P33_UNIT_ID</name>
           <value>101268004</value>
         </field>
+        <!--<field>
+          <name>P33_SELECTED_CLASS_ID</name>
+          <value>100047513</value>
+        </field>-->
       </fields>
     </entity>
     <entity>

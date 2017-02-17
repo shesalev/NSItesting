@@ -77,13 +77,10 @@ namespace NsiTest
             Assert.True(reqViewPage.IsEnterToRequest(), "No enter into nsi request");
         }
 
-        [Test]
-        public void ClassPositiveTestSuit()
+        public void EntityTestByFile(string pFileName)
         {
-            Console.WriteLine("Start Class test");
-
             // Load test data
-            var lNsiEntityList = LoadData.GetData("AttrClassData.xml");
+            var lNsiEntityList = LoadData.GetData(pFileName);
 
             //var lNsiEntityList = LoadData.GetData("ClassData.xml");
 
@@ -115,15 +112,40 @@ namespace NsiTest
                     if (lLastId.Length > 0)
                     {
                         lastId = lLastId;
-                    }                    
+                    }
                 }
             }
             else
             {
                 Assert.Fail("Пустой файл данных \"ClassData.xml\"");
             }
-
         }
+
+        [Test]
+        [Ignore("Ignore a test")]
+        public void ClassPositiveTestSuit()
+        {
+            Console.WriteLine("Start Class test");
+
+            EntityTestByFile("ClassData.xml");
+        }
+
+        [Test]
+        [Ignore("Ignore a test")]
+        public void AttibuteClassPositiveTestSuit()
+        {
+            Console.WriteLine("Start Attibute Class test");
+
+            EntityTestByFile("AttrClassData.xml");
+        }
+
+        //[Test]
+        //public void ParameterClassPositiveTestSuit()
+        //{
+        //    Console.WriteLine("Start Attibute Class test");
+
+        //    EntityTestByFile("ParamClassData.xml");
+        //}
 
         [TearDown]
         public void EndTest()

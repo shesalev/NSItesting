@@ -87,5 +87,9 @@ namespace NsiTest.Pages.NoModalPage
         {
             mainTabElement.goToSearch();
         }
+        public void WaitLoading()
+        {
+            Wait.UntilNotVisible(By.Id("loadingIcon"), Driver, TimeSpan.FromSeconds(15));
+        }
     }
 }
