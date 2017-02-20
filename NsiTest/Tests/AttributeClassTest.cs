@@ -17,7 +17,7 @@ namespace NsiTest.Tests
         public AttributeClassTest(string pParentId) : base()
         {
             this.classTabPage = new ClassTabPage();
-            this.EntityPatentId = pParentId/*"100061273"*/;
+            this.EntityPatentId = pParentId;
             base.setPositionPageAction(new PositionPageClass());
         }
 

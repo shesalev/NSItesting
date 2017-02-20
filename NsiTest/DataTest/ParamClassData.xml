@@ -3,7 +3,7 @@
   <request_id>4248</request_id>
   <entitys>
     <entity>
-      <type>class</type>
+      <type>paramclass</type>
       <id></id>
       <action>add</action>
       <fields>
@@ -26,7 +26,7 @@
       </fields>
     </entity>
     <entity>
-      <type>class</type>
+      <type>paramclass</type>
       <id>lastAdd</id>
       <action>delete</action>
       <fields>
