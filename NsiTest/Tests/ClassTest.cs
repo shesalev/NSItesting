@@ -14,10 +14,11 @@ namespace NsiTest.Tests
         public ClassTest(NsiEntity pEntity) : base(pEntity)
         {
             this.classTabPage = new ClassTabPage();
-            base.setPositionPageAction(new PositionPageClass(this.classTabPage));
+            this.EntityPage = this.classTabPage;
+            base.setPositionPageAction(new PositionPageClass(this.EntityPage));
         }
 
-        public override string Add(IList<NsiElementField> pFieldsList)
+        public override string Add()
         {
             String l_class_id = "";
 
@@ -26,7 +27,7 @@ namespace NsiTest.Tests
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-            defaultModalPage.FillForm(pFieldsList);
+            defaultModalPage.FillForm(this.FieldsList);
             defaultModalPage.Add();
 
             // Get last add id
@@ -35,32 +36,12 @@ namespace NsiTest.Tests
             this.EntityId = l_class_id;
 
             // Go to added class
-            setPosition();
+            //setPosition();
 
             //classPage.chkAddIcon(l_class_id);
 
             return l_class_id;
 
-        }
-
-        public override void Edit(IList<NsiElementField> pFieldsList)
-        {
-            OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Edit();
-        }
-
-        public override void Repair(IList<NsiElementField> pFieldsList)
-        {
-            OpenAndFillModal(classTabPage, this.EntityId, pFieldsList).Repair();
-        }
-
-        public override void Delete()
-        {
-            OpenAndFillModal(classTabPage, this.EntityId, new List<NsiElementField>()).Delete();
-        }
-
-        public void View()
-        {
-            OpenAndFillModal(classTabPage, this.EntityId, new List<NsiElementField>()).Cancel();
-        }
+        }        
     }
 }

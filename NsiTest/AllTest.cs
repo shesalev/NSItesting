@@ -122,7 +122,6 @@ namespace NsiTest
         }
 
         [Test]
-        [Ignore("Ignore a test")]
         // Class test
         public void ClassPositiveTestSuit()
         {
@@ -132,6 +131,7 @@ namespace NsiTest
         }
 
         [Test]
+        //[Ignore("Ignore a test")]
         // Attibute Class test
         public void AttibuteClassPositiveTestSuit()
         {

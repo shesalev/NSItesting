@@ -25,7 +25,7 @@ namespace NsiTest.Tests.Positions
             else
             {
                 //throw new Exception("Null value in pParentId");
-                CurPage.SearchByIdGuid(pEntityId);
+                page.SearchByIdGuid(pEntityId);
             }
         }
     }

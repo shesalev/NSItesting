@@ -8,10 +8,10 @@ namespace NsiTest.Tests
 {
     public abstract class EntityTest
     {
-        //protected NoModalPage EntityPage;
+        protected NoModalPage EntityPage;
         protected string EntityId;
         protected string EntityPatentId;
-        protected IList<NsiElementField> fieldsList;
+        protected IList<NsiElementField> FieldsList;
 
         protected PositionPageAction positionPageAction;
 
@@ -19,7 +19,7 @@ namespace NsiTest.Tests
         {
             this.EntityId = pEntity.Id;
             this.EntityPatentId = pEntity.ParentId;
-            //this.fieldsList = pFieldsList;
+            this.FieldsList = pEntity.Fields;
         }
 
         // Установка объекта позиции
@@ -38,38 +38,44 @@ namespace NsiTest.Tests
         //    //Console.WriteLine("setPosition to Id: " + p_entity_id);
         //    this.EntityId = p_entity_id;
         //    PositionEntityFromFrameAction.setPosition(p_entity_id);
-        //}
+        //}        
 
-        //public void setPositionEntityAction(PositionEntityAction positionEntityAction)
-        //{
-        //    this.positionEntityAction = positionEntityAction;
-        //}
-
-        //public abstract void setPosition();
-
-        //public abstract void setPosition(String p_entity_id);
-
-        protected DefaultModalPage OpenAndFillModal(NoModalPage pPage, string pEntity, IList<NsiElementField> pFieldsList)
+        protected DefaultModalPage OpenAndFillModal()
         {
-            pPage.WaitLoading();
+
+            EntityPage.WaitLoading();
 
             // Open modal form
-            pPage.ClickEditViewModalByValue(pEntity);
+            EntityPage.ClickEditViewModalByValue(this.EntityId);
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
             // Fill form
-            defaultModalPage.FillForm(pFieldsList);
+            defaultModalPage.FillForm(this.FieldsList);
 
             return defaultModalPage;
         }
 
-        public abstract string Add(IList<NsiElementField> pFieldsList);
+        public abstract string Add();
 
-        public abstract void Edit(IList<NsiElementField> pFieldsList);
+        public void Edit()
+        {
+            OpenAndFillModal().Edit();
+        }
 
-        public abstract void Delete();
+        public void Repair()
+        {
+            OpenAndFillModal().Repair();
+        }
 
-        public abstract void Repair(IList<NsiElementField> pFieldsList);
+        public void Delete()
+        {
+            OpenAndFillModal().Delete();
+        }
+
+        public void View()
+        {
+            OpenAndFillModal().Cancel();
+        }
     }
 }

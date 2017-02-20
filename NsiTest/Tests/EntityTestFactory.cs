@@ -40,12 +40,12 @@ namespace NsiTest.Tests
             if (pEntity.ActionEquals("add"))
             {
                 entityTest.setPosition();
-                return entityTest.Add(pEntity.Fields);
+                return entityTest.Add();
             }
             else if (pEntity.ActionEquals("edit"))
             {
                 entityTest.setPosition();
-                entityTest.Edit(pEntity.Fields);
+                entityTest.Edit();
             }
             else if (pEntity.ActionEquals("delete"))
             {
@@ -55,7 +55,7 @@ namespace NsiTest.Tests
             else if (pEntity.ActionEquals("repair"))
             {
                 entityTest.setPosition();
-                entityTest.Repair(pEntity.Fields);
+                entityTest.Repair();
             }
             else
             { }
