@@ -131,7 +131,7 @@ namespace NsiTest
         }
 
         [Test]
-        [Ignore("Ignore a test")]
+        //[Ignore("Ignore a test")]
         public void AttibuteClassPositiveTestSuit()
         {
             Console.WriteLine("Start Attibute Class test");
@@ -139,13 +139,13 @@ namespace NsiTest
             EntityTestByFile("AttrClassData.xml");
         }
 
-        [Test]
-        public void ParameterClassPositiveTestSuit()
-        {
-            Console.WriteLine("Start Attibute Class test");
+        //[Test]
+        //public void ParameterClassPositiveTestSuit()
+        //{
+        //    Console.WriteLine("Start Attibute Class test");
 
-            EntityTestByFile("ParamClassData.xml");
-        }
+        //    EntityTestByFile("ParamClassData.xml");
+        //}
 
         [TearDown]
         public void EndTest()
