@@ -21,11 +21,21 @@ namespace NsiTest.Fields
 
         public string Action { get; private set; }
 
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
         public string ParentId { get; private set; }
 
         public IList<NsiElementField> Fields { get; private set; }
+
+        public bool ActionEquals(string pValue)
+        {
+            return this.Action.Equals(pValue);
+        }
+
+        public bool IdIsLastAdd()
+        {
+            return this.Id.Equals("lastadd");
+        }
 
         public override string ToString()
         {

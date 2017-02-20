@@ -51,6 +51,7 @@ namespace NsiTest
             }
         }
 
+        // Enter to request
         private void EnterToRequest(String pRequestId)
         {
             // Search nsi request in IR on requests page
@@ -68,9 +69,7 @@ namespace NsiTest
             // Enter into nsi
             var reqViewPage = new RequestViewPage();
 
-
             reqViewPage.ContainsTitle();
-
 
             reqViewPage.enterToNsi();
 
@@ -82,36 +81,37 @@ namespace NsiTest
             // Load test data
             var lNsiEntityList = LoadData.GetData(pFileName);
 
-            //var lNsiEntityList = LoadData.GetData("ClassData.xml");
-
             if (lNsiEntityList.Count > 0)
             {
                 // Enter to request
                 EnterToRequest("4248");
 
-                string lastId = "";
+                string lLastId = "";
 
+                // Execute test for every entity from test file
                 foreach (NsiEntity lEntity in lNsiEntityList)
                 {
-                    var lId = lEntity.Id;
-
-                    if (lId.Equals("lastadd"))
+                    // If entity id is "lastadd" then assign lId from lastId
+                    if (lEntity.IdIsLastAdd())
                     {
-                        if (lastId.Length == 0)
+                        if (lLastId.Length == 0)
                         {
                             Console.WriteLine("Skip test " + lEntity.ToString());
                             continue;
                         }
-                        lId = lastId;
+                        lEntity.Id = lLastId;
                     }
 
+                    // Declare entity
                     EntityTestFactory entityTestFactory = new EntityTestFactory();
 
-                    string lLastId = entityTestFactory.Test(lEntity, lId);
+                    // Execute test for entity
+                    string lAddId = entityTestFactory.Test(lEntity);
 
-                    if (lLastId.Length > 0)
+                    // Assign last entity id
+                    if (lAddId.Length > 0)
                     {
-                        lastId = lLastId;
+                        lLastId = lAddId;
                     }
                 }
             }
@@ -123,6 +123,7 @@ namespace NsiTest
 
         [Test]
         [Ignore("Ignore a test")]
+        // Class test
         public void ClassPositiveTestSuit()
         {
             Console.WriteLine("Start Class test");
@@ -131,7 +132,7 @@ namespace NsiTest
         }
 
         [Test]
-        //[Ignore("Ignore a test")]
+        // Attibute Class test
         public void AttibuteClassPositiveTestSuit()
         {
             Console.WriteLine("Start Attibute Class test");

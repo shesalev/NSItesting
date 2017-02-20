@@ -153,6 +153,11 @@ namespace Swd.Core.WebDriver
             //IList<IWebElement> elements = driver.GetVisibleElements(by);
             IList<IWebElement> elements = driver.FindElements(by);
 
+            if (elements.Count == 0)
+            {
+                throw new OpenQA.Selenium.ElementNotVisibleException(by.ToString());
+            }
+
             foreach (IWebElement element in elements)
             {
                 try
@@ -170,8 +175,6 @@ namespace Swd.Core.WebDriver
                 }
             }
             return null;
-
-
         }
 
         /// <summary>

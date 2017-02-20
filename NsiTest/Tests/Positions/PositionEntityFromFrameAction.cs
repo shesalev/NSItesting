@@ -6,7 +6,7 @@ using NsiTest.Pages.ModalPage;
 
 namespace NsiTest.Tests.Positions
 {
-    public static class PositionEntityAction
+    public static class PositionEntityFromFrameAction
     {
         public static string GetEditViewBtnSelector(string pValue)
         {

@@ -31,7 +31,7 @@ namespace NsiTest.Pages.NoModalPage
 
         public IWebElement GetEditViewEntityBtn(string pValue)
         {
-            return FindElementsFirstVisible(By.XPath(PositionEntityAction.GetEditViewBtnSelector(pValue)));
+            return FindElementsFirstVisible(By.XPath(PositionEntityFromFrameAction.GetEditViewBtnSelector(pValue)));
         }
 
         public void ClickEditViewModalByValue(String pValue)
@@ -57,9 +57,9 @@ namespace NsiTest.Pages.NoModalPage
         // Open modal search form on any no modal page
         public void SearchByIdGuid(String idGuid)
         {
-            IWebElement editBtn = GetEditViewEntityBtn(idGuid);
+            //IWebElement editBtn = GetEditViewEntityBtn(idGuid);
 
-            if (editBtn == null)
+            if (!FastVisibleElement(By.XPath(PositionEntityFromFrameAction.GetEditViewBtnSelector(idGuid))))
             {
                 try
                 {

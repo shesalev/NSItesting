@@ -16,11 +16,11 @@ namespace NsiTest.Tests
             // TODO: add other using types
             if (pEntity.Type.Equals("class"))
             {
-                entityTest = new ClassTest(/*lId, lEntity.Fields*/);
+                entityTest = new ClassTest(pEntity);
             }
             else if (pEntity.Type.Equals("attrclass"))
             {
-                entityTest = new AttributeClassTest(pEntity.ParentId);
+                entityTest = new AttributeClassTest(pEntity);
             }
             else
             {
@@ -29,7 +29,7 @@ namespace NsiTest.Tests
             return entityTest;
         }
 
-        public string Test(NsiEntity pEntity, string pId)
+        public string Test(NsiEntity pEntity)
         {
             // Get test entity
             EntityTest entityTest = CreateNsiElement(pEntity);
@@ -37,24 +37,24 @@ namespace NsiTest.Tests
             Console.WriteLine("Test entity " + pEntity.ToString());
 
             // Do test action
-            if (pEntity.Action.Equals("add"))
+            if (pEntity.ActionEquals("add"))
             {
                 entityTest.setPosition();
                 return entityTest.Add(pEntity.Fields);
             }
-            else if (pEntity.Action.Equals("edit"))
+            else if (pEntity.ActionEquals("edit"))
             {
-                entityTest.setPosition(pId);
+                entityTest.setPosition();
                 entityTest.Edit(pEntity.Fields);
             }
-            else if (pEntity.Action.Equals("delete"))
+            else if (pEntity.ActionEquals("delete"))
             {
-                entityTest.setPosition(pId);
+                entityTest.setPosition();
                 entityTest.Delete();
             }
-            else if (pEntity.Action.Equals("repair"))
+            else if (pEntity.ActionEquals("repair"))
             {
-                entityTest.setPosition(pId);
+                entityTest.setPosition();
                 entityTest.Repair(pEntity.Fields);
             }
             else

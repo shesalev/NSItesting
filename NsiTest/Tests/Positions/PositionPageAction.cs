@@ -1,7 +1,16 @@
-﻿namespace NsiTest.Tests.Positions
+﻿using NsiTest.Pages.NoModalPage;
+
+namespace NsiTest.Tests.Positions
 {
-    public interface PositionPageAction
+    public abstract class PositionPageAction
     {
-        void set();
+        protected NoModalPage CurPage;
+
+        public PositionPageAction(NoModalPage pPage)
+        {
+            this.CurPage = pPage;
+        }
+
+        public abstract void set(string pEntityId, string pParentId);
     }
 }

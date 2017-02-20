@@ -7,6 +7,10 @@ namespace NsiTest.Pages.NoModalPage
 {
     public class ClassTabPage : NoModalPageWithIR
     {
+        public static string C_CLASS_FOLDER_ID = "0";
+        public static string C_CONNECTOR_FOLDER_ID = "2";
+        public static string C_DICTIONARY_FOLDER_ID = "1";
+
         [FindsBy(How = How.XPath, Using = @"id(""addClassBtn"")")]
         public IWebElement addClassBtn { get; set; }
 
@@ -17,17 +21,6 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""tab_01"")")]
         public IWebElement AttrClassTab { get; set; }
 
-
-        //public boolean selectedClass(String class_id)
-        //{
-        //    return $(By.id("classesTree-id-" + class_id)).shouldBe(Condition.visible).exists();
-        //}
-
-        //public void selectClass(String class_id)
-        //{
-        //$(By.id("classesTree-id-" + class_id)).click();
-        //}
-
         public void clkEditViewClassModal(string entityId)
         {
             ClickEditViewModalByValue(entityId);
@@ -35,18 +28,12 @@ namespace NsiTest.Pages.NoModalPage
 
         public void clkCreateClassModal()
         {
-            //$(By.id("classesTree-id-0")).shouldBe(Condition.visible).click();
-            //    waitLoader();
-            //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
             addClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             addClassBtn.Click();
         }
 
         public void clkCreateAttributeClassModal()
         {
-            //$(By.id("classesTree-id-0")).shouldBe(Condition.visible).click();
-            //    waitLoader();
-            //$(By.id("addClassBtn")).shouldBe(Condition.visible).click();
             addAttrClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             addAttrClassBtn.Click();
         }
@@ -57,19 +44,14 @@ namespace NsiTest.Pages.NoModalPage
             try
             {
                 var obj = ExecuteScript("$('#classesTree').fancytree('getTree').getNodeByKey('" + pId + "').setActive();");
-                Console.WriteLine(obj.ToString());
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e);
+                throw new NoSuchElementException("No found node with id = '" + pId + "' in tree ");
             }
-
-            //SwdBrowser.HandleJavaScriptErrors();
-
-            FindElementBy(By.Id("classesTree-id-" + pId));
-
-            //FindElementBy(By.XPath(".//table[@class='apexir_WORKSHEET_DATA']/tbody/tr/td/a[@value='" + pValue + "']"));
+            
+            //FindElementBy(By.Id("classesTree-id-" + pId));
         }
 
         public void clkAttrClassTab()

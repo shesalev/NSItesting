@@ -5,15 +5,26 @@ namespace NsiTest.Tests.Positions
 {
     public class PositionPageClass : PositionPageAction
     {
-        public void set()
+        public PositionPageClass(NoModalPage pPage) : base(pPage)
         {
-            Console.WriteLine("Go to class entity");
+        }
 
-            ClassTabPage classPage = new ClassTabPage();
+        public override void set(string pEntityId, string pParentId)
+        {
+            Console.WriteLine("PositionPageClass");
 
-            classPage.goToClasses();
+            CurPage.goToClasses();
 
-            //classPage.goToSearch();
+            ClassTabPage page = new ClassTabPage();
+
+            if (pEntityId.Length > 0)
+            {
+                page.selectClassInTree(pEntityId);
+            }
+            else
+            {
+                page.selectClassInTree(ClassTabPage.C_CLASS_FOLDER_ID);
+            }
         }
     }
 }
