@@ -14,37 +14,14 @@ namespace NsiTest.Tests
 
         public ClassTest(NsiEntity pEntity) : base(pEntity)
         {
-            ClassTabPage lClassTabPage = new ClassTabPage();
-            this.EntityPage = lClassTabPage;
-            this.AddClassAction = lClassTabPage;
-            this.setPositionPageAction(new PositionPageClass(this.EntityPage));
-            this.setPosition();
+            this.setPositionPageAction(new PositionPageClass(NoModalPage.GetCurrentPage()));
+            this.setPosition();             
+            this.AddClassAction = (AddClassPageAction)this.EntityPage;
         }
 
-        public override string Add()
+        protected override void ClkOpenCreateModal()
         {
-            String l_class_id = "";
-
             AddClassAction.clkCreateClass();
-
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            // Fill form
-            defaultModalPage.FillForm(this.FieldsList);
-            defaultModalPage.Add();
-
-            // Get last add id
-            l_class_id = EntityPage.GetLastAddEntityId();
-
-            //this.EntityId = l_class_id;
-
-            // Go to added class
-            //setPosition();
-
-            //classPage.chkAddIcon(l_class_id);
-
-            return l_class_id;
-
-        }        
+        }
     }
 }

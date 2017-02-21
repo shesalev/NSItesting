@@ -9,7 +9,7 @@ namespace NsiTest.Tests.Positions
         {
         }
 
-        public override void set(string pEntityId, string pParentId)
+        public override NoModalPage set(string pEntityId, string pParentId)
         {
             Console.WriteLine("PositionPageClassAttr");
             
@@ -19,12 +19,16 @@ namespace NsiTest.Tests.Positions
                 ClassPos.set(pParentId, "");
                 ClassTabPage page = new ClassTabPage();
                 page.clkAttrClassTab();
+                return page;
             }
             else
             {
                 //throw new Exception("Null value in pParentId");
                 CurPage.SearchByIdGuid(pEntityId);
+                return new ClassTabPage();
             }
+
+             
         }
     }
 }

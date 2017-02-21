@@ -30,7 +30,7 @@ namespace NsiTest.Tests
 
         public void setPosition()
         {
-            positionPageAction.set(this.EntityId, this.EntityPatentId);
+            this.EntityPage = positionPageAction.set(this.EntityId, this.EntityPatentId);
         }
 
         //public void setPosition(String p_entity_id)
@@ -38,40 +38,71 @@ namespace NsiTest.Tests
         //    //Console.WriteLine("setPosition to Id: " + p_entity_id);
         //    this.EntityId = p_entity_id;
         //    PositionEntityFromFrameAction.setPosition(p_entity_id);
-        //}        
+        //}                
 
-        private DefaultModalPage OpenAndFillModal()
+        // Open entity add modal page 
+        protected abstract void ClkOpenCreateModal();
+
+        private DefaultModalPage FillDefaultModalPage()
         {
-            EntityPage.WaitLoading();
-
-            // Open modal form
-            EntityPage.ClickEditViewModalByValue(this.EntityId);
-
             DefaultModalPage defaultModalPage = new DefaultModalPage();
-
             // Fill form
             defaultModalPage.FillForm(this.FieldsList);
 
             return defaultModalPage;
         }
 
-        public abstract string Add();
+        // Add entity
+        //public abstract string Add();
+        public string Add()
+        {
+            string l_class_id = "";
 
+            ClkOpenCreateModal();
+
+            FillDefaultModalPage().Add();
+
+            // Get last add id
+            l_class_id = EntityPage.GetLastAddEntityId();
+
+            //this.EntityId = l_class_id;
+
+            //classPage.chkAddIcon(l_class_id);
+
+            return l_class_id;
+        }        
+
+        private DefaultModalPage OpenAndFillModal()
+        {
+            // Waiting for page to load
+            EntityPage.WaitLoading();
+
+            // Open modal form
+            EntityPage.ClickEditViewModalByValue(this.EntityId);
+            
+            // Fill modal form
+            return FillDefaultModalPage();
+        }
+
+        // Edit entity
         public void Edit()
         {
             OpenAndFillModal().Edit();
         }
 
+        // Repair entity
         public void Repair()
         {
             OpenAndFillModal().Repair();
         }
 
+        // Delete entity
         public void Delete()
         {
             OpenAndFillModal().Delete();
         }
 
+        // View entity
         public void View()
         {
             OpenAndFillModal().Cancel();

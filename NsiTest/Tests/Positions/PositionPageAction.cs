@@ -11,6 +11,6 @@ namespace NsiTest.Tests.Positions
             this.CurPage = pPage;
         }
 
-        public abstract void set(string pEntityId, string pParentId);
+        public abstract NoModalPage set(string pEntityId, string pParentId);
     }
 }

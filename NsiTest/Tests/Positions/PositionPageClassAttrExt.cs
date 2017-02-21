@@ -9,22 +9,25 @@ namespace NsiTest.Tests.Positions
         {
         }
 
-        public override void set(string pEntityId, string pParentId)
+        public override NoModalPage set(string pEntityId, string pParentId)
         {
             Console.WriteLine("PositionPageClassAttr");
             
             if (pParentId.Length > 0)
             {
                 PositionPageClass ClassPos = new PositionPageClass(CurPage);
-                ClassPos.set(pParentId, "");
-                ClassTabPage page = new ClassTabPage();
+                ClassTabPage page = (ClassTabPage)ClassPos.set(pParentId, "");                 
                 page.clkAttrClassTab();
                 page.clkAttrClsExtBtn();
+                ArrtClassExtPage attrClassExtPage = new ArrtClassExtPage();
+                return attrClassExtPage;
             }
             else
             {
                 //throw new Exception("Null value in pParentId");
                 CurPage.SearchByIdGuid(pEntityId);
+                ClassTabPage page = new ClassTabPage();
+                return page;
             }
         }
     }

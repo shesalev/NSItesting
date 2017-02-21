@@ -9,7 +9,7 @@ namespace NsiTest.Tests.Positions
         {
         }
 
-        public override void set(string pEntityId, string pParentId)
+        public override NoModalPage set(string pEntityId, string pParentId)
         {
             Console.WriteLine("PositionPageClass");
 
@@ -25,6 +25,8 @@ namespace NsiTest.Tests.Positions
             {
                 page.selectClassInTree(ClassTabPage.C_CLASS_FOLDER_ID);
             }
+
+            return page;
         }
     }
 }

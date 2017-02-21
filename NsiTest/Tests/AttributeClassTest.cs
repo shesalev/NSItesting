@@ -1,52 +1,25 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NsiTest.Fields;
+﻿using NsiTest.Fields;
 using NsiTest.Pages.NoModalPage;
 using NsiTest.Pages.ModalPage;
 using NsiTest.Tests.Positions;
+using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Tests
 {
     public class AttributeClassTest : EntityTest
     {
-        private ClassTabPage classTabPage;
+        private AddAttrClassPageAction AddAttrClassPage;
 
         public AttributeClassTest(NsiEntity pEntity) : base(pEntity)
         {
-            this.classTabPage = new ClassTabPage();
-            this.EntityPage = this.classTabPage;
-            this.setPositionPageAction(new /*PositionPageClassAttr*/PositionPageClassAttrExt(this.EntityPage));
+            this.setPositionPageAction(new PositionPageClassAttr/*PositionPageClassAttrExt*/(NoModalPage.GetCurrentPage()));
             this.setPosition();
-        }
+            this.AddAttrClassPage = (AddAttrClassPageAction)this.EntityPage;
+        }        
 
-        public override string Add()
+        protected override void ClkOpenCreateModal()
         {
-            String l_class_id = "";
-
-            classTabPage.selectClassInTree(this.EntityPatentId);
-
-            classTabPage.clkAttrClassTab();
-
-            classTabPage.clkCreateAttributeClass();
-
-            DefaultModalPage defaultModalPage = new DefaultModalPage();
-
-            // Fill form
-            defaultModalPage.FillForm(this.FieldsList);
-            defaultModalPage.Add();
-
-            // Get last add id
-            l_class_id = EntityPage.GetLastAddEntityId();
-
-            this.EntityId = l_class_id;
-
-            //classPage.chkAddIcon(l_class_id);
-
-            return l_class_id;
+            AddAttrClassPage.clkCreateAttributeClass();
         }
     }
 }
