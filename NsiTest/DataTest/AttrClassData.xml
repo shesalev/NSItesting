@@ -27,6 +27,20 @@
         </field>
       </fields>
     </entity>
+
+    <entity>
+      <type>attrclass</type>
+      <id>100062345</id>
+      <patentid>100334302</patentid>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P33_DESCRIPTION</name>
+          <value>test attr description edit</value>
+        </field>
+      </fields>
+    </entity>
+
     <entity>
       <type>attrclass</type>
       <id>lastAdd</id>

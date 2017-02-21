@@ -141,6 +141,16 @@ namespace NsiTest
             EntityTestByFile("AttrClassData.xml");
         }
 
+        [Test]
+        //[Ignore("Ignore a test")]
+        // Attibute Class test
+        public void AttibuteClassRefClassPositiveTestSuit()
+        {
+            Console.WriteLine("Start Attibute Class test");
+
+            EntityTestByFile("AttrClassData_RefClass.xml");
+        }
+
         //[Test]
         //public void ParameterClassPositiveTestSuit()
         //{

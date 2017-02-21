@@ -11,30 +11,6 @@ namespace Swd.Core.WebDriver
 {
     public static class Wait
     {
-//        public static IWebElement UntilVisible(By by, IWebDriver driver, TimeSpan timeOut)
-//        {
-//        try
-//            {
-//                IList<IWebElement> elements = driver.GetVisibleElements(by);
-
-//                foreach (IWebElement element in elements)
-//                {
-//                    element.WaitUntilVisible(200);
-
-//                    if (element.IsDisplayedSafe())
-//                    {
-//                        return element;
-//                    }
-//}
-//                return null;
-//            }
-//            catch (Exception e)
-//            {
-//                // Empty; Ignored
-//                return null;
-//            }
-//        }
-
         public static IWebElement UntilVisible(IWebElement element, TimeSpan timeOut)
         {
             Stopwatch sw = new Stopwatch();
@@ -68,18 +44,29 @@ namespace Swd.Core.WebDriver
             return UntilVisible(element, TimeSpan.FromMilliseconds(timeOutMilliseconds));
         }
 
-        
+        // Try find visible element
         public static IWebElement UntilVisible(By by, IWebDriver driver, TimeSpan timeOut)
         {
-            WebDriverWait wdWait = new WebDriverWait(driver, timeOut);
-            wdWait.IgnoreExceptionTypes
-            (
-                typeof(ElementNotVisibleException),
-                typeof(NoSuchElementException),
-                typeof(StaleElementReferenceException)
-            );
+            IWebElement element;
+            try
+            {
+                WebDriverWait wdWait = new WebDriverWait(driver, timeOut);
+                wdWait.IgnoreExceptionTypes
+                (
+                    typeof(ElementNotVisibleException),
+                    typeof(NoSuchElementException),
+                    typeof(StaleElementReferenceException)
+                );
 
-            return wdWait.Until(ExpectedConditions.ElementIsVisible(by));
+                element = wdWait.Until(ExpectedConditions.ElementIsVisible(by));
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                Console.Write(e.StackTrace);
+                throw new ElementNotVisibleException(by.ToString());
+            }
+
+            return element;
         }
 
         public static IWebElement UntilVisible(By by, IWebDriver driver, int timeOutMilliseconds)

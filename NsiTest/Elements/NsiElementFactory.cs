@@ -6,33 +6,27 @@ namespace NsiTest.Elements
     {
         public NsiElement CreateNsiElement(IWebElement pElement)
         {
-            NsiElement nsiElement = null;
-
-            IWebElement lInput = pElement;
-
             // TODO: add other using types
-            if (NsiElement.hasClass(lInput, "modal_window_input"))
+            if (NsiElement.hasClass(pElement, "modal_window_input"))
             {
-                nsiElement = new NsiInput(lInput);
+                return new NsiInput(pElement);
             }
-            else if (NsiElement.hasClass(lInput, "modal_window_select"))
+            else if (NsiElement.hasClass(pElement, "modal_window_select"))
             {
-                nsiElement = new NsiSelectList(lInput);
+                return new NsiSelectList(pElement);
             }
-            else if (NsiElement.hasClass(lInput, "modal_window_id_list"))
+            else if (NsiElement.hasClass(pElement, "modal_window_id_list"))
             {
-                nsiElement = new NsiIdList(lInput);
+                return new NsiIdList(pElement);
             }
-            else if (NsiElement.hasClass(lInput, "superlov-input"))
+            else if (NsiElement.hasClass(pElement, "superlov-input"))
             {
-                nsiElement = new NsiSuperLov(lInput);
+                return new NsiSuperLov(pElement);
             }
             else
             {
-                nsiElement = new NsiNullElement(lInput);
+                return new NsiNullElement(pElement);
             }
-
-            return nsiElement;
         }
     }
 }

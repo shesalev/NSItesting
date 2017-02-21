@@ -1,14 +1,12 @@
 ﻿using OpenQA.Selenium;
 using Swd.Core.WebDriver;
-using System;
 
 namespace NsiTest.Elements
 {
     internal class NsiSuperLov : NsiElement
     {
-        public NsiSuperLov(IWebElement pElement) : base(pElement)
-        {
-        }
+        public NsiSuperLov(IWebElement pElement) : base(pElement) { }
+
         public override void setValue(string pValue)
         {
             // Open modal window with table of values

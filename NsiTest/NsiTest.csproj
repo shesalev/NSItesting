@@ -139,6 +139,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataTest\AttrClassData_RefClass.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DataTest\AttrClassData.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Swd.Core.Pages;
 using Swd.Core.WebDriver;
 using OpenQA.Selenium;

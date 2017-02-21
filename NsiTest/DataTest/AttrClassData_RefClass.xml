@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suit>
+  <request_id>4248</request_id>
+  <entitys>
+    <!--Ref class attribute-->
+    <entity>
+      <type>attrclass</type>
+      <id></id>
+      <patentid>110360381</patentid>
+      <action>add</action>
+      <fields>
+        <field>
+          <name>P33_NAME</name>
+          <value>test class ref attr</value>
+        </field>
+        <field>
+          <name>P33_DESCRIPTION</name>
+          <value>test class ref attr description</value>
+        </field>        
+        <field>
+          <name>P33_VALUE_TYPE_ID</name>
+          <value>4</value>
+        </field>
+        <field>
+          <name>P33_SELECTED_CLASS_ID</name>
+          <value>100047513</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>attrclass</type>
+      <id>lastAdd</id>
+      <action>delete</action>
+      <fields>
+      </fields>
+    </entity>
+  </entitys>
+</suit>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NsiTest.Tests.Positions;
+﻿using NsiTest.Tests.Positions;
 using NsiTest.Fields;
 using NsiTest.Pages.ModalPage;
 using NsiTest.Pages.NoModalPage;
@@ -9,17 +8,14 @@ namespace NsiTest.Tests
     public abstract class EntityTest
     {
         protected NoModalPage EntityPage;
-        protected string EntityId;
-        protected string EntityPatentId;
-        protected IList<NsiElementField> FieldsList;
 
-        protected PositionPageAction positionPageAction;
+        private NsiEntity Entity;
+
+        private PositionPageAction positionPageAction;
 
         public EntityTest(NsiEntity pEntity)
         {
-            this.EntityId = pEntity.Id;
-            this.EntityPatentId = pEntity.ParentId;
-            this.FieldsList = pEntity.Fields;
+            this.Entity = pEntity;
         }
 
         // Установка объекта позиции
@@ -30,7 +26,7 @@ namespace NsiTest.Tests
 
         public void setPosition()
         {
-            this.EntityPage = positionPageAction.set(this.EntityId, this.EntityPatentId);
+            this.EntityPage = positionPageAction.set(Entity.Id, Entity.ParentId);
         }
 
         //public void setPosition(String p_entity_id)
@@ -47,7 +43,7 @@ namespace NsiTest.Tests
         {
             DefaultModalPage defaultModalPage = new DefaultModalPage();
             // Fill form
-            defaultModalPage.FillForm(this.FieldsList);
+            defaultModalPage.FillForm(Entity.Fields);
 
             return defaultModalPage;
         }
@@ -56,21 +52,22 @@ namespace NsiTest.Tests
         //public abstract string Add();
         public string Add()
         {
-            string l_class_id = "";
+            //string l_class_id = "";
 
             ClkOpenCreateModal();
 
             FillDefaultModalPage().Add();
 
             // Get last add id
-            l_class_id = EntityPage.GetLastAddEntityId();
+            //l_class_id = EntityPage.GetLastAddEntityId();
+            return EntityPage.GetLastAddEntityId();
 
             //this.EntityId = l_class_id;
 
             //classPage.chkAddIcon(l_class_id);
 
-            return l_class_id;
-        }        
+            //return l_class_id;
+        }
 
         private DefaultModalPage OpenAndFillModal()
         {
@@ -78,8 +75,8 @@ namespace NsiTest.Tests
             EntityPage.WaitLoading();
 
             // Open modal form
-            EntityPage.ClickEditViewModalByValue(this.EntityId);
-            
+            EntityPage.ClickEditViewModalByValue(Entity.Id);
+
             // Fill modal form
             return FillDefaultModalPage();
         }

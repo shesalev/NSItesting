@@ -11,7 +11,9 @@ namespace NsiTest.Elements
 
         public override void setValue(string pValue)
         {
-           // TODO: add code for set value
+            var lIdList = pValue.Split(':');
+            //"btn_add_to_selected"
+            //"modal_window_id_list_region"
         }
     }
 }
