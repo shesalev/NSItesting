@@ -3,9 +3,9 @@ using NsiTest.Pages.NoModalPage;
 
 namespace NsiTest.Tests.Positions
 {
-    public class PositionPageClassAttr : PositionPageAction
+    public class PositionPageClassAttrExt : PositionPageAction
     {
-        public PositionPageClassAttr(NoModalPage pPage) : base(pPage)
+        public PositionPageClassAttrExt(NoModalPage pPage) : base(pPage)
         {
         }
 
@@ -19,6 +19,7 @@ namespace NsiTest.Tests.Positions
                 ClassPos.set(pParentId, "");
                 ClassTabPage page = new ClassTabPage();
                 page.clkAttrClassTab();
+                page.clkAttrClsExtBtn();
             }
             else
             {

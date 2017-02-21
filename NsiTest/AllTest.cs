@@ -74,6 +74,7 @@ namespace NsiTest
             reqViewPage.enterToNsi();
 
             Assert.True(reqViewPage.IsEnterToRequest(), "No enter into nsi request");
+
         }
 
         public void EntityTestByFile(string pFileName)

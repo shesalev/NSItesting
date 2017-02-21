@@ -88,6 +88,8 @@
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
     <Compile Include="Fields\NsiEntityField.cs" />
+    <Compile Include="Pages\AddPageAction\AddAttrClassPageAction.cs" />
+    <Compile Include="Pages\AddPageAction\AddClassPageAction.cs" />
     <Compile Include="Tests\AttributeClassTest.cs" />
     <Compile Include="Tests\EntityTestFactory.cs" />
     <Compile Include="Tests\LoadData.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Positions\PositionEntityFromFrameAction.cs" />
     <Compile Include="Tests\Positions\PositionPageAction.cs" />
+    <Compile Include="Tests\Positions\PositionPageClassAttrExt.cs" />
     <Compile Include="Tests\Positions\PositionPageClassAttr.cs" />
     <Compile Include="Tests\Positions\PositionPageClass.cs" />
     <Compile Include="UnitTests\ErrorPageMessageTest.cs" />
@@ -152,6 +155,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

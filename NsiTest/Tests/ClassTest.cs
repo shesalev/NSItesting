@@ -4,25 +4,28 @@ using NsiTest.Pages.NoModalPage;
 using NsiTest.Pages.ModalPage;
 using NsiTest.Tests.Positions;
 using NsiTest.Fields;
+using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Tests
 {
     public class ClassTest : EntityTest
     {
-        private ClassTabPage classTabPage;
+        private AddClassPageAction AddClassAction;
 
         public ClassTest(NsiEntity pEntity) : base(pEntity)
         {
-            this.classTabPage = new ClassTabPage();
-            this.EntityPage = this.classTabPage;
-            base.setPositionPageAction(new PositionPageClass(this.EntityPage));
+            ClassTabPage lClassTabPage = new ClassTabPage();
+            this.EntityPage = lClassTabPage;
+            this.AddClassAction = lClassTabPage;
+            this.setPositionPageAction(new PositionPageClass(this.EntityPage));
+            this.setPosition();
         }
 
         public override string Add()
         {
             String l_class_id = "";
 
-            classTabPage.clkCreateClassModal();
+            AddClassAction.clkCreateClass();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
@@ -31,9 +34,9 @@ namespace NsiTest.Tests
             defaultModalPage.Add();
 
             // Get last add id
-            l_class_id = classTabPage.GetLastAddEntityId();
+            l_class_id = EntityPage.GetLastAddEntityId();
 
-            this.EntityId = l_class_id;
+            //this.EntityId = l_class_id;
 
             // Go to added class
             //setPosition();

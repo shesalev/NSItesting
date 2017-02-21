@@ -14,11 +14,13 @@ namespace NsiTest.Tests
     public class AttributeClassTest : EntityTest
     {
         private ClassTabPage classTabPage;
+
         public AttributeClassTest(NsiEntity pEntity) : base(pEntity)
         {
             this.classTabPage = new ClassTabPage();
             this.EntityPage = this.classTabPage;
-            base.setPositionPageAction(new PositionPageClassAttr(this.EntityPage));
+            this.setPositionPageAction(new /*PositionPageClassAttr*/PositionPageClassAttrExt(this.EntityPage));
+            this.setPosition();
         }
 
         public override string Add()
@@ -29,7 +31,7 @@ namespace NsiTest.Tests
 
             classTabPage.clkAttrClassTab();
 
-            classTabPage.clkCreateAttributeClassModal();
+            classTabPage.clkCreateAttributeClass();
 
             DefaultModalPage defaultModalPage = new DefaultModalPage();
 
@@ -38,7 +40,7 @@ namespace NsiTest.Tests
             defaultModalPage.Add();
 
             // Get last add id
-            l_class_id = classTabPage.GetLastAddEntityId();
+            l_class_id = EntityPage.GetLastAddEntityId();
 
             this.EntityId = l_class_id;
 

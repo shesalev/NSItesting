@@ -40,9 +40,8 @@ namespace NsiTest.Tests
         //    PositionEntityFromFrameAction.setPosition(p_entity_id);
         //}        
 
-        protected DefaultModalPage OpenAndFillModal()
+        private DefaultModalPage OpenAndFillModal()
         {
-
             EntityPage.WaitLoading();
 
             // Open modal form

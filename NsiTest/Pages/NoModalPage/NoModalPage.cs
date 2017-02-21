@@ -14,9 +14,20 @@ namespace NsiTest.Pages.NoModalPage
 {
     public abstract class NoModalPage : CorePage
     {
+        private static NoModalPage CurPage;
+
         protected String C_TITLE;
 
         protected MainTabElement mainTabElement = new MainTabElement();
+
+        public NoModalPage()
+        {
+            CurPage = this;
+        }
+
+        public static NoModalPage GetCurrentPage() {
+            return CurPage;
+        }
 
         public bool ContainsTitle()
         {
@@ -36,8 +47,7 @@ namespace NsiTest.Pages.NoModalPage
 
         public void ClickEditViewModalByValue(String pValue)
         {
-            IWebElement lSelectRow = GetEditViewEntityBtn(pValue);
-            lSelectRow.Click();
+            GetEditViewEntityBtn(pValue).Click();
         }
 
         public String GetLastAddEntityId()
@@ -55,7 +65,7 @@ namespace NsiTest.Pages.NoModalPage
         }
 
         // Open modal search form on any no modal page
-        public void SearchByIdGuid(String idGuid)
+        public /*NoModalPage*/void SearchByIdGuid(String idGuid)
         {
             //IWebElement editBtn = GetEditViewEntityBtn(idGuid);
 
@@ -76,6 +86,8 @@ namespace NsiTest.Pages.NoModalPage
 
                 searchModalPage.clkRedirectBtn();
             }
+
+            //return this;
         }
 
         public void goToClasses()

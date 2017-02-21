@@ -2,10 +2,11 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using Swd.Core.WebDriver;
+using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Pages.NoModalPage
 {
-    public class ClassTabPage : NoModalPageWithIR
+    public class ClassTabPage : NoModalPageWithIR, AddClassPageAction, AddAttrClassPageAction
     {
         public static string C_CLASS_FOLDER_ID = "0";
         public static string C_CONNECTOR_FOLDER_ID = "2";
@@ -17,22 +18,21 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""addAttributeBtn"")")]
         public IWebElement addAttrClassBtn { get; set; }
 
+        [FindsBy(How = How.XPath, Using = @"id(""AttrClsExt"")")]
+        public IWebElement AttrClsExtBtn { get; set; }
+        
+
         // class tabs
         [FindsBy(How = How.XPath, Using = @"id(""tab_01"")")]
-        public IWebElement AttrClassTab { get; set; }
+        public IWebElement AttrClassTab { get; set; }       
 
-        public void clkEditViewClassModal(string entityId)
-        {
-            ClickEditViewModalByValue(entityId);
-        }
-
-        public void clkCreateClassModal()
+        public void clkCreateClass()
         {
             addClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             addClassBtn.Click();
         }
 
-        public void clkCreateAttributeClassModal()
+        public void clkCreateAttributeClass()
         {
             addAttrClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             addAttrClassBtn.Click();
@@ -58,6 +58,12 @@ namespace NsiTest.Pages.NoModalPage
         {
             AttrClassTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
             AttrClassTab.Click();
+        }
+
+        public void clkAttrClsExtBtn()
+        {
+            AttrClsExtBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            AttrClsExtBtn.Click();
         }
 
         //public void clkCreateConnectorModal()

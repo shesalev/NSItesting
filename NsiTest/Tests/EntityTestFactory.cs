@@ -39,22 +39,22 @@ namespace NsiTest.Tests
             // Do test action
             if (pEntity.ActionEquals("add"))
             {
-                entityTest.setPosition();
+                // entityTest.setPosition();
                 return entityTest.Add();
             }
             else if (pEntity.ActionEquals("edit"))
             {
-                entityTest.setPosition();
+                // entityTest.setPosition();
                 entityTest.Edit();
             }
             else if (pEntity.ActionEquals("delete"))
             {
-                entityTest.setPosition();
+                // entityTest.setPosition();
                 entityTest.Delete();
             }
             else if (pEntity.ActionEquals("repair"))
             {
-                entityTest.setPosition();
+                // entityTest.setPosition();
                 entityTest.Repair();
             }
             else
