@@ -15,9 +15,9 @@ namespace NsiTest.Pages.NoModalPage
 
         public RequestViewPage():base()
         {
-            PageFactory.InitElements(SwdBrowser.Driver, this);
-            Console.WriteLine("RequestViewPage");
-            Console.WriteLine(Driver.Title);
+            //PageFactory.InitElements(SwdBrowser.Driver, this);
+            //Console.WriteLine("RequestViewPage");
+            //Console.WriteLine(Driver.Title);
             C_TITLE = "Заявка";
         }
 

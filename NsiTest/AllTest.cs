@@ -59,7 +59,6 @@ namespace NsiTest
 
             reqListPage.ContainsTitle();
 
-
             var ir = reqListPage.GetIntReport();
 
             ir.SearchText(pRequestId);
