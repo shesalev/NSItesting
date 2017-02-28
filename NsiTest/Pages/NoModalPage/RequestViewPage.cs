@@ -13,11 +13,8 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""nsi_request_status"")")]
         private IWebElement requestStatus { get; set; }
 
-        public RequestViewPage():base()
+        public RequestViewPage()
         {
-            //PageFactory.InitElements(SwdBrowser.Driver, this);
-            //Console.WriteLine("RequestViewPage");
-            //Console.WriteLine(Driver.Title);
             C_TITLE = "Заявка";
         }
 
