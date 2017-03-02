@@ -1,5 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Swd.Core.WebDriver;
 
 namespace NsiTest.Elements
 {
@@ -7,8 +9,9 @@ namespace NsiTest.Elements
     {
         public NsiSelectList(IWebElement pElement) : base(pElement) { }
 
-        public override void setValue(string pValue)
+        public override void SetValue(string pValue)
         {
+            Element.WaitUntilVisible(TimeSpan.FromSeconds(10));
             SelectElement selectList = new SelectElement(Element);
             selectList.SelectByValue(pValue);
         }

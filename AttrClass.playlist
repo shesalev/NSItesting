@@ -1,1 +1,1 @@
-<Playlist Version="1.0"><Add Test="NsiTest.AllTest.AttibuteClassRefClassPositiveTestSuit" /></Playlist>
+<Playlist Version="1.0"><Add Test="NsiTest.AllTest.AttibuteClassRefClassPositiveTestSuit" /><Add Test="NsiTest.AllTest.AttibuteClassPositiveTestSuit" /></Playlist>

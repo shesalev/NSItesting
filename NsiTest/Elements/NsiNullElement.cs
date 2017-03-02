@@ -9,7 +9,7 @@ namespace NsiTest.Elements
         {
         }
         override
-        public void setValue(String pValue)
+        public void SetValue(String pValue)
         {
         }
     }

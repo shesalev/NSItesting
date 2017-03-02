@@ -11,15 +11,34 @@ namespace NsiTest.Elements
     public class InteractiveReport : CorePage
     {
         [FindsBy(How = How.XPath, Using = @"id(""apexir_SEARCH"")")]
-        [CacheLookup]
+        //[CacheLookup]
         private IWebElement searchInput { get; set; }
 
         [FindsBy(How = How.XPath, Using = @"id(""apexir_btn_SEARCH"")")]
-        [CacheLookup]
+        //[CacheLookup]
         private IWebElement searchBtn { get; set; }
+
+        [FindsBy(How = How.XPath, Using = @"id(""apexir_CONTROL_PANEL_COMPLETE"")")]
+        //[CacheLookup]
+        private IWebElement FilterTable { get; set; }
+
+        public void ClearFilter()
+        {
+            if (FastVisibleElement(By.Id("apexir_CONTROL_PANEL_COMPLETE")))
+            {
+                IList<IWebElement> lDelFilterList = FilterTable.FindElements(By.CssSelector("a"));
+                foreach (var lDelFilter in lDelFilterList)
+                {
+                    lDelFilter.Click();
+                    WaitLoading();
+                }
+            }
+        }
 
         public void SearchText(String pText)
         {
+            WaitLoading();
+
             searchInput.WaitUntilVisible().SendKeys(pText);
 
             searchBtn.WaitUntilVisible().Click();

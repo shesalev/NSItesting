@@ -2,7 +2,7 @@
 <suit>
   <request_id>4248</request_id>
   <entitys>
-    <!--Ref class attribute-->
+    <!--Add Ref class attribute-->
     <entity>
       <type>attrclass</type>
       <id></id>
@@ -16,14 +16,25 @@
         <field>
           <name>P33_DESCRIPTION</name>
           <value>test class ref attr description</value>
-        </field>        
+        </field>
         <field>
           <name>P33_VALUE_TYPE_ID</name>
           <value>4</value>
         </field>
         <field>
           <name>P33_SELECTED_CLASS_ID</name>
-          <value>100047513</value>
+          <value>100047513:100860897:100187082:100860899:100860898:100000753:100082664</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>attrclass</type>
+      <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P33_SELECTED_CLASS_ID</name>
+          <value>108047255</value>
         </field>
       </fields>
     </entity>
@@ -34,5 +45,9 @@
       <fields>
       </fields>
     </entity>
+
+    <!--Edit Ref class attribute-->
+
+
   </entitys>
 </suit>

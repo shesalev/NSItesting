@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using Swd.Core.WebDriver;
 
 namespace NsiTest.Elements
@@ -7,8 +8,15 @@ namespace NsiTest.Elements
     {
         public NsiSuperLov(IWebElement pElement) : base(pElement) { }
 
-        public override void setValue(string pValue)
+        /// <summary>
+        /// Set value for select list page element
+        /// </summary>
+        /// <param name="pValue">Value</param>
+        public override void SetValue(string pValue)
         {
+            // Check visible page element
+            Element.WaitUntilVisible(TimeSpan.FromSeconds(10));
+
             // Open modal window with table of values
             var lOpenModalBtn = Element.GetPatent().GetPatent().FindElement(By.CssSelector(".superlov-modal-open"));
             lOpenModalBtn.Click();

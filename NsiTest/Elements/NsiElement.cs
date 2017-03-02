@@ -1,9 +1,10 @@
 ﻿using System;
 using OpenQA.Selenium;
+using Swd.Core.Pages;
 
 namespace NsiTest.Elements
 {
-    public abstract class NsiElement
+    public abstract class NsiElement : CorePage
     {
         protected IWebElement Element;
 
@@ -12,14 +13,22 @@ namespace NsiTest.Elements
             this.Element = pElement;
         }
 
-        // Check for the class of an element
-        public static bool hasClass(IWebElement pInput, string pClassName)
+        /// <summary>
+        /// Check for the class of an element
+        /// </summary>
+        /// <param name="pInput">Value</param>
+        /// <param name="pClassName">Value</param>
+        public static bool HasClass(IWebElement pInput, string pClassName)
         {
             String lClass = pInput.GetAttribute("class").ToUpper();
             return lClass.Contains(pClassName.ToUpper());
         }
 
-        abstract public void setValue(string pValue);
+        /// <summary>
+        /// Set value for page element
+        /// </summary>
+        /// <param name="pValue">Value</param>
+        abstract public void SetValue(string pValue);
     }
 
 }

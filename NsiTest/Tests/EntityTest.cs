@@ -60,6 +60,7 @@ namespace NsiTest.Tests
 
             // Get last add id
             //l_class_id = EntityPage.GetLastAddEntityId();
+
             return EntityPage.GetLastAddEntityId();
 
             //this.EntityId = l_class_id;
