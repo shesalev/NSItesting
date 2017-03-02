@@ -19,7 +19,7 @@ namespace NsiTest.Tests
             }
         }
 
-        public static IList<NsiEntity> GetData(String pPathXMLFile)
+        public static NsiSuite GetData(String pPathXMLFile)
         {
             XDocument lDoc = new XDocument(); //создаем класс XDocument
 
@@ -28,11 +28,12 @@ namespace NsiTest.Tests
             lDoc = XDocument.Load(currDir + "\\DataTest\\" + pPathXMLFile);
 
             var lEntity = new List<NsiEntity>();
+            var reqEl = "";
 
-            foreach (XElement suitEl in lDoc.Elements("suit"))
+            foreach (XElement suiteEl in lDoc.Elements("suit"))
             {
-                var reqEl = suitEl.Element("request_id");
-                var entitysEl = suitEl.Element("entitys");
+                reqEl = GetValueByTagName(suiteEl,"request_id");
+                var entitysEl = suiteEl.Element("entitys");
 
                 //выводим в цикле названия всех дочерних элементов и их значения
                 foreach (XElement entityEl in entitysEl.Elements("entity"))
@@ -59,7 +60,7 @@ namespace NsiTest.Tests
                     lEntity.Add(new NsiEntity(typeVal, actionVal, idVal, parentIdVal, lData));
                 }
             }
-            return lEntity;
+            return new NsiSuite(reqEl, lEntity) ;
         }
     }
 

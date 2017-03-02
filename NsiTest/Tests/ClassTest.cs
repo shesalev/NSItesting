@@ -7,7 +7,6 @@ namespace NsiTest.Tests
 {
     public class ClassTest : EntityTest
     {
-
         public ClassTest(NsiEntity pEntity) : base(pEntity)
         {
             setPositionPageAction(new PositionPageClass(NoModalPage.GetCurrentPage()));

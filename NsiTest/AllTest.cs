@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using NUnit.Framework;
-using NsiTest.Pages.NoModalPage;
 using NsiTest.Tests;
 using Swd.Core.WebDriver;
 using Swd.Core.Configuration;
-using NsiTest.Exceptions;
 using NsiTest.Fields;
 
 namespace NsiTest
@@ -16,15 +13,7 @@ namespace NsiTest
         [SetUp]
         public void Initialize()
         {
-            //try
-            //{
             Login();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.StackTrace);
-            //    Assert.Fail(e.Message);
-            //}
         }
 
         private void Login()
@@ -51,40 +40,16 @@ namespace NsiTest
             }
         }
 
-        // Enter to request
-        private void EnterToRequest(String pRequestId)
-        {
-            // Search nsi request in IR on requests page
-            var reqListPage = new RequestListPage();
-
-            reqListPage.ContainsTitle();
-
-            var ir = reqListPage.GetIntReport();
-
-            ir.SearchText(pRequestId);
-
-            ir.SelectRowByValue(pRequestId);
-
-            // Enter into nsi
-            var reqViewPage = new RequestViewPage();
-
-            reqViewPage.ContainsTitle();
-
-            reqViewPage.enterToNsi();
-
-            Assert.True(reqViewPage.IsEnterToRequest(), "No enter into nsi request");
-
-        }
-
         public void EntityTestByFile(string pFileName)
         {
             // Load test data
-            var lNsiEntityList = LoadData.GetData(pFileName);
+            var lNsiSuite = LoadData.GetData(pFileName);
+            var lNsiEntityList = lNsiSuite.EntityList;
 
             if (lNsiEntityList.Count > 0)
             {
                 // Enter to request
-                EnterToRequest("4248");
+                Assert.True(RequestTest.EnterToRequest(lNsiSuite.RequestId), "No enter into nsi request");
 
                 string lLastId = "";
 
@@ -117,7 +82,7 @@ namespace NsiTest
             }
             else
             {
-                Assert.Fail("Пустой файл данных \"ClassData.xml\"");
+                Assert.Fail("Пустой файл данных \"" + pFileName + "\"");
             }
         }
 
@@ -128,6 +93,15 @@ namespace NsiTest
             Console.WriteLine("Start Class test");
 
             EntityTestByFile("ClassData.xml");
+        }
+
+        [Test, Description("sinple class test")]
+        // Class test
+        public void SimpleClassPositiveTestSuit()
+        {
+            Console.WriteLine("Start Class test");
+
+            EntityTestByFile("ClassData2.xml");
         }
 
         [Test]
@@ -141,7 +115,6 @@ namespace NsiTest
         }
 
         [Test]
-        //[Ignore("Ignore a test")]
         // Attibute Class test
         public void AttibuteClassRefClassPositiveTestSuit()
         {

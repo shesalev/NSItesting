@@ -87,7 +87,8 @@
     <Compile Include="Exceptions\GlobalSearchPageError.cs" />
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
-    <Compile Include="Fields\NsiEntityField.cs" />
+    <Compile Include="Fields\NsiEntity.cs" />
+    <Compile Include="Fields\NsiSuite.cs" />
     <Compile Include="Pages\AddPageAction\AddAttrClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddClassPageAction.cs" />
     <Compile Include="Tests\AttributeClassTest.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Tests\Positions\PositionPageClassAttrExt.cs" />
     <Compile Include="Tests\Positions\PositionPageClassAttr.cs" />
     <Compile Include="Tests\Positions\PositionPageClass.cs" />
+    <Compile Include="Tests\RequestTest.cs" />
     <Compile Include="UnitTests\ErrorPageMessageTest.cs" />
   </ItemGroup>
   <ItemGroup>
