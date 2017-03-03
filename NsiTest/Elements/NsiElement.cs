@@ -21,7 +21,7 @@ namespace NsiTest.Elements
         /// <param name="pClassName">Value</param>
         public static bool HasClass(IWebElement pInput, string pClassName)
         {
-            String lClass = pInput.GetAttribute("class").ToUpper();
+            String lClass = pInput.GetAttribute(Resource1.ClassAttrbute).ToUpper();
             return lClass.Contains(pClassName.ToUpper());
         }
 
