@@ -9,9 +9,7 @@ namespace NsiTest.Elements
 {
     public class NsiAnalitic : NsiElement
     {
-        public NsiAnalitic(IWebElement pElement) : base(pElement)
-        {
-        }
+        public NsiAnalitic(IWebElement pElement) : base(pElement) { }
 
         public override void SetValue(NsiElementFieldValue pValue)
         {

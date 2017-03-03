@@ -5,6 +5,30 @@ using Swd.Core.WebDriver;
 using Swd.Core.Configuration;
 using NsiTest.Fields;
 
+//// Explicit Waits
+//WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+//IWebElement myDynamicElement = wait.Until<IWebElement>(d => d.FindElement(By.Id("someDynamicElement")));
+//
+//WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+//IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("someid")));
+
+//IWebElement element = (IWebElement)((IJavaScriptExecutor)driver).ExecuteScript("return $('.cheese')[0]");
+
+//IList<IWebElement> labels = driver.FindElements(By.TagName("label"));
+//IList<IWebElement> inputs = (IList<IWebElement>)((IJavaScriptExecutor)driver).ExecuteScript(
+//    "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
+//    "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
+
+//// Alternatively, you can pass a “window handle” to the “switchTo().window()” 
+////method.Knowing this, it’s possible to iterate over every open window like so:
+//foreach (string handle in driver.WindowHandles) {
+//  driver.SwitchTo().Window(handle);
+//}
+
+//// The “navigate” interface also exposes the ability to move backwards and forwards in your browser’s history:
+//driver.Navigate().Forward();
+//driver.Navigate().Back();
+
 namespace NsiTest
 {
     [TestFixture]

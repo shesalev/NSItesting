@@ -8,38 +8,38 @@ namespace NsiTest.Elements
     {
         private NsiElement CreateNsiElement(string pId)
         {
-            IWebElement pElement = SwdBrowser.Driver.FindElement(By.Id(pId)) ;
+            IWebElement lElement = SwdBrowser.Driver.FindElement(By.Id(pId)) ;
 
             // TODO: add other using types
-            if (NsiElement.HasClass(pElement, "modal_window_input"))
+            if (NsiElement.HasClass(lElement, "modal_window_input"))
             {
-                return new NsiInput(pElement);
+                return new NsiInput(lElement);
             }
-            else if (NsiElement.HasClass(pElement, "modal_window_select"))
+            else if (NsiElement.HasClass(lElement, "modal_window_select"))
             {
-                return new NsiSelectList(pElement);
+                return new NsiSelectList(lElement);
             }
-            else if (NsiElement.HasClass(pElement, "superlov-input"))
+            else if (NsiElement.HasClass(lElement, "superlov-input"))
             {
-                return new NsiSuperLov(pElement);
+                return new NsiSuperLov(lElement);
             }
-            else if (NsiElement.HasClass(pElement, "modal_window_id_list"))
+            else if (NsiElement.HasClass(lElement, "modal_window_id_list"))
             {
-                return new NsiIdList(pElement);
+                return new NsiIdList(lElement);
             }
-            else if (NsiElement.HasClass(pElement, "modal_window_anl_per"))
+            else if (NsiElement.HasClass(lElement, "modal_window_anl_per"))
             {
-                return new NsiAnalitic(pElement);
+                return new NsiAnalitic(lElement);
             }
             else
             {
-                return new NsiNullElement(pElement);
+                return new NsiNullElement(lElement);
             }
         }
 
         public void SetValue(NsiElementField pField)
         {
-            NsiElement nsiEl = CreateNsiElement(pField.GetId());
+            NsiElement nsiEl = CreateNsiElement(pField.FieldId);
 
             nsiEl.SetValue(pField.FieldValue);
         }

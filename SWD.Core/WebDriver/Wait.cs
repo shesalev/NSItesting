@@ -67,7 +67,7 @@ namespace Swd.Core.WebDriver
             }
 
             return element;
-        }
+        }        
 
         public static IWebElement UntilVisible(By by, IWebDriver driver, int timeOutMilliseconds)
         {

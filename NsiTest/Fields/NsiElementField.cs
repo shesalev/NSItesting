@@ -4,28 +4,28 @@ namespace NsiTest.Fields
 {
     public class NsiElementField
     {
-        private string _fieldId;
 
         public NsiElementField(string pFieldId, NsiElementFieldValue pFieldValue)
         {
-            this._fieldId = pFieldId;
+            this.FieldId = pFieldId;
             this.FieldValue = pFieldValue;
         }
-
-        public string GetId()
+        
+        public string FieldId
         {
-            return _fieldId;
-        }
-
-        public string GetTextValue()
-        {
-            return FieldValue.ToString();
+            get;
+            private set;
         }
 
         public NsiElementFieldValue FieldValue
         {
             get;
             private set;
+        }
+
+        public string GetTextValue()
+        {
+            return FieldValue.ToString();
         }
 
     }
