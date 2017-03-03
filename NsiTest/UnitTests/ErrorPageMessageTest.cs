@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using NsiTest.Elements;
 using OpenQA.Selenium;
@@ -70,8 +66,8 @@ namespace NsiTest.UnitTests
         public string Text
         {
             get;
-            private set; 
-        }        
+            private set;
+        }
 
         public void Clear()
         {
@@ -122,9 +118,9 @@ namespace NsiTest.UnitTests
         {
             try
             {
-               String mess;
+                String mess;
                 IWebElement elem = new NullWebElement("ывапр");
-                
+
                 mess = ErrorPageMessage.GetMessage(elem);
 
                 Assert.True(mess.Equals("ывапр"));

@@ -1,5 +1,5 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using NsiTest.Fields;
 
 namespace NsiTest.Elements
 {
@@ -9,7 +9,7 @@ namespace NsiTest.Elements
         {
         }
         override
-        public void SetValue(String pValue)
+        public void SetValue(NsiElementFieldValue pValue)
         {
         }
     }

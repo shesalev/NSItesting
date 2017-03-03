@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using NsiTest.Fields;
@@ -13,10 +12,21 @@ namespace NsiTest.Tests
             try
             {
                 return pEntityEl.Element(pTagName).Value;
-            }catch(System.NullReferenceException e)
+            }
+            catch (System.NullReferenceException e)
             {
                 return "";
             }
+        }
+
+        public static string GetValue(XElement pEntityEl)
+        {
+            return pEntityEl.Value;
+        }
+
+        public static XElement GetValueElementByTagName(XElement pEntityEl)
+        {
+            return pEntityEl.Element("value");
         }
 
         public static NsiSuite GetData(String pPathXMLFile)
@@ -32,7 +42,7 @@ namespace NsiTest.Tests
 
             foreach (XElement suiteEl in lDoc.Elements("suit"))
             {
-                reqEl = GetValueByTagName(suiteEl,"request_id");
+                reqEl = GetValueByTagName(suiteEl, "request_id");
                 var entitysEl = suiteEl.Element("entitys");
 
                 //выводим в цикле названия всех дочерних элементов и их значения
@@ -52,15 +62,15 @@ namespace NsiTest.Tests
                     // Выводим в цикле названия всех дочерних элементов и их значения
                     foreach (XElement fieldEl in fieldsEl.Elements("field"))
                     {
-                        var nameEl = GetValueByTagName(fieldEl,"name");
-                        var valueEl = GetValueByTagName(fieldEl,"value");
-                        lData.Add(new NsiElementField(nameEl, valueEl));
+                        var nameEl = GetValueByTagName(fieldEl, "name");
+                        var valueEl = GetValueElementByTagName(fieldEl);
+                        lData.Add(new NsiElementField(nameEl, new NsiElementFieldValue(valueEl)));
                     }
 
                     lEntity.Add(new NsiEntity(typeVal, actionVal, idVal, parentIdVal, lData));
                 }
             }
-            return new NsiSuite(reqEl, lEntity) ;
+            return new NsiSuite(reqEl, lEntity);
         }
     }
 

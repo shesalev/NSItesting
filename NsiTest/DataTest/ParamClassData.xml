@@ -5,23 +5,35 @@
     <entity>
       <type>paramclass</type>
       <id></id>
+      <patentid>110360381</patentid>
       <action>add</action>
       <fields>
         <field>
-          <name>P31_PARENT_CLASS_ID</name>
-          <value>100061273</value>
+          <name>P32_NAME</name>
+          <value>test parameter class</value>
         </field>
         <field>
-          <name>P31_CLASS_NAME</name>
-          <value>test</value>
+          <name>P32_DESCRIPTION</name>
+          <value>test parameter class description</value>
         </field>
         <field>
-          <name>P31_CLASS_DESCRIPTION</name>
-          <value>test description</value>
+          <name>P32_UNIT_ID</name>
+          <value>101268004</value>
         </field>
         <field>
-          <name>P31_ISRESTRICT</name>
-          <value>1</value>
+          <name>reg_an</name>
+          <value>
+            <analitic>
+              <id>103009091</id>
+              <period>5</period>
+              <value>1</value>
+            </analitic>
+            <analitic>
+              <id>105076184</id>
+              <period>2</period>
+              <value>2</value>
+            </analitic>
+          </value>
         </field>
       </fields>
     </entity>

@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="AllTest.cs" />
     <Compile Include="Elements\ErrorPageMessage.cs" />
+    <Compile Include="Elements\NsiAnalitic.cs" />
     <Compile Include="Elements\NsiIdList.cs" />
     <Compile Include="Elements\NsiNullElement.cs" />
     <Compile Include="Elements\NsiSelectList.cs" />
@@ -87,10 +88,13 @@
     <Compile Include="Exceptions\GlobalSearchPageError.cs" />
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
+    <Compile Include="Fields\NsiElementFieldValue.cs" />
     <Compile Include="Fields\NsiEntity.cs" />
     <Compile Include="Fields\NsiSuite.cs" />
+    <Compile Include="Pages\AddPageAction\AddParamClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddAttrClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddClassPageAction.cs" />
+    <Compile Include="Tests\ParameterClassTest.cs" />
     <Compile Include="Tests\AttributeClassTest.cs" />
     <Compile Include="Tests\EntityTestFactory.cs" />
     <Compile Include="Tests\LoadData.cs" />
@@ -115,6 +119,7 @@
     <Compile Include="Pages\NoModalPage\ArrtClassExtPage.cs" />
     <Compile Include="Tests\Positions\PositionEntityFromFrameAction.cs" />
     <Compile Include="Tests\Positions\PositionPageAction.cs" />
+    <Compile Include="Tests\Positions\PositionPageClassParam.cs" />
     <Compile Include="Tests\Positions\PositionPageClassAttrExt.cs" />
     <Compile Include="Tests\Positions\PositionPageClassAttr.cs" />
     <Compile Include="Tests\Positions\PositionPageClass.cs" />

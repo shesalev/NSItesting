@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using Swd.Core.WebDriver;
+using NsiTest.Fields;
 
 namespace NsiTest.Elements
 {
@@ -12,7 +13,7 @@ namespace NsiTest.Elements
         /// Set value for select list page element
         /// </summary>
         /// <param name="pValue">Value</param>
-        public override void SetValue(string pValue)
+        public override void SetValue(NsiElementFieldValue pValue)
         {
             // Check visible page element
             Element.WaitUntilVisible(TimeSpan.FromSeconds(10));
@@ -22,7 +23,7 @@ namespace NsiTest.Elements
             lOpenModalBtn.Click();
 
             // Select value by pValue
-            var lRow = SwdBrowser.Driver.FindElementBy(By.CssSelector("[data-return=\"" + pValue + "\"]"));
+            var lRow = SwdBrowser.Driver.FindElementBy(By.CssSelector("[data-return=\"" + pValue.ToString() + "\"]"));
             lRow.Click();
         }
     }

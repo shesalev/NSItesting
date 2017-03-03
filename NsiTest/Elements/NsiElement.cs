@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using Swd.Core.Pages;
+using NsiTest.Fields;
 
 namespace NsiTest.Elements
 {
@@ -28,7 +29,7 @@ namespace NsiTest.Elements
         /// Set value for page element
         /// </summary>
         /// <param name="pValue">Value</param>
-        abstract public void SetValue(string pValue);
+        abstract public void SetValue(NsiElementFieldValue pValue);
     }
 
 }

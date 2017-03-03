@@ -123,13 +123,13 @@ namespace NsiTest
             EntityTestByFile("AttrClassData_RefClass.xml");
         }
 
-        //[Test]
-        //public void ParameterClassPositiveTestSuit()
-        //{
-        //    Console.WriteLine("Start Attibute Class test");
+        [Test]
+        public void ParameterClassPositiveTestSuit()
+        {
+            Console.WriteLine("Start Attibute Class test");
 
-        //    EntityTestByFile("ParamClassData.xml");
-        //}
+            EntityTestByFile("ParamClassData.xml");
+        }
 
         [TearDown]
         public void EndTest()

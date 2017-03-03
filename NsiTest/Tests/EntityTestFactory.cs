@@ -22,9 +22,11 @@ namespace NsiTest.Tests
             {
                 entityTest = new AttributeClassTest(pEntity);
             }
-            else
+            else if (pEntity.Type.Equals("paramclass"))
             {
+                entityTest = new ParameterClassTest(pEntity);
             }
+            else {}
 
             return entityTest;
         }

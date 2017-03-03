@@ -6,7 +6,7 @@ using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Pages.NoModalPage
 {
-    public class ClassTabPage : NoModalPageWithIR, AddClassPageAction, AddAttrClassPageAction
+    public class ClassTabPage : NoModalPageWithIR, AddClassPageAction, AddAttrClassPageAction, AddParamClassPageAction
     {
         public static string C_CLASS_FOLDER_ID = "0";
         public static string C_CONNECTOR_FOLDER_ID = "2";
@@ -18,13 +18,19 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""addAttributeBtn"")")]
         public IWebElement addAttrClassBtn { get; set; }
 
+        [FindsBy(How = How.XPath, Using = @"id(""addParameterBtn"")")]
+        public IWebElement addParamClassBtn { get; set; }
+
         [FindsBy(How = How.XPath, Using = @"id(""AttrClsExt"")")]
         public IWebElement AttrClsExtBtn { get; set; }
         
-
         // class tabs
+        // Attribute
         [FindsBy(How = How.XPath, Using = @"id(""tab_01"")")]
-        public IWebElement AttrClassTab { get; set; }       
+        public IWebElement AttrClassTab { get; set; }
+        // param
+        [FindsBy(How = How.XPath, Using = @"id(""tab_02"")")]
+        public IWebElement ParamClassTab { get; set; }
 
         public void clkCreateClass()
         {
@@ -32,11 +38,7 @@ namespace NsiTest.Pages.NoModalPage
             addClassBtn.Click();
         }
 
-        public void clkCreateAttributeClass()
-        {
-            addAttrClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
-            addAttrClassBtn.Click();
-        }
+        
 
         public void selectClassInTree(string pId)
         {
@@ -54,6 +56,12 @@ namespace NsiTest.Pages.NoModalPage
             //FindElementBy(By.Id("classesTree-id-" + pId));
         }
 
+        public void clkCreateAttributeClass()
+        {
+            addAttrClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            addAttrClassBtn.Click();
+        }
+
         public void clkAttrClassTab()
         {
             AttrClassTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
@@ -64,6 +72,19 @@ namespace NsiTest.Pages.NoModalPage
         {
             AttrClsExtBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
             AttrClsExtBtn.Click();
+        }
+
+
+        public void clkCreateParameterClass()
+        {
+            addParamClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            addParamClassBtn.Click();
+        }
+
+        public void clkParamClassTab()
+        {
+            ParamClassTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            ParamClassTab.Click();
         }
 
         //public void clkCreateConnectorModal()

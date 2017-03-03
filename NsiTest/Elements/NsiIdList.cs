@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using OpenQA.Selenium;
+using NsiTest.Fields;
 
 namespace NsiTest.Elements
 {
@@ -54,9 +55,10 @@ namespace NsiTest.Elements
         /// Set value for page element with list of id
         /// </summary>
         /// <param name="pValue">List of Id</param>
-        public override void SetValue(string pValue)
+        public override void SetValue(NsiElementFieldValue pValue)
         {
-            List<string> lAddIdList = pValue.Split(C_SEPARATOR).ToList();
+            // TODO: переделать на одну функцию (убрать тройные точки)
+            List<string> lAddIdList = pValue.ToString().Split(C_SEPARATOR).ToList();
             List<string> lDelIdList = new List<string>();
 
             IWebElement lTableIdList = FindElementBy(By.ClassName("modal_window_id_list_region"));

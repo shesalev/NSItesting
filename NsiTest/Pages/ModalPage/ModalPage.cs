@@ -25,6 +25,9 @@ namespace NsiTest.Pages.ModalPage
         [FindsBy(How = How.XPath, Using = @"id(""btnRepair"")")]
         protected IWebElement RepairBtn { get; private set; }
 
+        [FindsBy(How = How.XPath, Using = @"id(""btnHistory"")")]
+        protected IWebElement HistoryBtn { get; private set; }
+
         [FindsBy(How = How.CssSelector, Using = @"#messages .htmldbUlErr li")]
         protected IWebElement MessTextElem { get; private set; }
 

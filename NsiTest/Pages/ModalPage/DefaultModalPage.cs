@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using OpenQA.Selenium;
-using Swd.Core.WebDriver;
+﻿using System.Collections.Generic;
 using NsiTest.Fields;
 using NsiTest.Elements;
 
@@ -9,11 +6,11 @@ namespace NsiTest.Pages.ModalPage
 {
     public class DefaultModalPage : ModalPage
     {
-        private NsiElementFactory nsiElementFactory;
+        //private NsiElementFactory nsiElementFactory;
 
         public DefaultModalPage()
         {
-            nsiElementFactory = new NsiElementFactory();
+            //nsiElementFactory = new NsiElementFactory();
         }
 
         // Fill all fields on modal form
@@ -21,11 +18,10 @@ namespace NsiTest.Pages.ModalPage
         {
             foreach (NsiElementField lField in pFieldsList)
             {
-                IWebElement pageInputEl = FindElement(By.Id(lField.getId()))/*.WaitUntilVisible(TimeSpan.FromSeconds(10))*/;
-               
-                NsiElement nsiEl = nsiElementFactory.CreateNsiElement(pageInputEl);
+                //NsiElement nsiEl = nsiElementFactory.CreateNsiElement(lField.getId());
+                NsiElementFactory nsiEl = new NsiElementFactory();
 
-                nsiEl.SetValue(lField.getValue());
+                nsiEl.SetValue(lField);
             }
         }
     }
