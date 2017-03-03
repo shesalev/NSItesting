@@ -94,10 +94,15 @@
     <Compile Include="Pages\AddPageAction\AddParamClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddAttrClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddClassPageAction.cs" />
-    <Compile Include="Resource1.Designer.cs">
+    <Compile Include="ResourceHtml.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
+      <DependentUpon>ResourceHtml.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceXmlTags.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceXmlTags.resx</DependentUpon>
     </Compile>
     <Compile Include="Tests\ParameterClassTest.cs" />
     <Compile Include="Tests\AttributeClassTest.cs" />
@@ -173,9 +178,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource1.resx">
+    <EmbeddedResource Include="ResourceHtml.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ResourceHtml.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceXmlTags.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceXmlTags.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

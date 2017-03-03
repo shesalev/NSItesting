@@ -15,7 +15,8 @@ namespace NsiTest.Elements
         {
             var lElement = pValue.Element;
 
-            foreach (XElement analiticEl in lElement.Elements("analitic"))
+            // Find all xml elements with tag "analitic"
+            foreach (XElement analiticEl in lElement.Elements(ResourceXmlTags.XmlTagAnalitic))
             {
                 var periodEl = analiticEl.Element("period").Value;
                 var optValue = analiticEl.Element("value").Value + "_" + analiticEl.Element("id").Value;
