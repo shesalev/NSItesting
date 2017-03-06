@@ -13,6 +13,8 @@ namespace NsiTest.Pages.ModalPage
         {
             foreach (NsiElementField lField in pFieldsList)
             {
+                WaitLoading();
+
                 NsiElementFactory nsiEl = new NsiElementFactory();
 
                 nsiEl.SetValue(lField);

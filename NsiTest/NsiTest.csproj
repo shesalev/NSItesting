@@ -81,6 +81,7 @@
     <Compile Include="AllTest.cs" />
     <Compile Include="Elements\ErrorPageMessage.cs" />
     <Compile Include="Elements\NsiAnalitic.cs" />
+    <Compile Include="Elements\NsiAnlPerElement.cs" />
     <Compile Include="Elements\NsiIdList.cs" />
     <Compile Include="Elements\NsiNullElement.cs" />
     <Compile Include="Elements\NsiSelectList.cs" />
@@ -88,6 +89,8 @@
     <Compile Include="Exceptions\GlobalSearchPageError.cs" />
     <Compile Include="Exceptions\PageError.cs" />
     <Compile Include="Exceptions\TitleError.cs" />
+    <Compile Include="Fields\NsiAnlPer.cs" />
+    <Compile Include="Fields\NsiAnlPerComparer.cs" />
     <Compile Include="Fields\NsiElementFieldValue.cs" />
     <Compile Include="Fields\NsiEntity.cs" />
     <Compile Include="Fields\NsiSuite.cs" />

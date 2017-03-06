@@ -23,7 +23,7 @@ namespace NsiTest.Elements
             lOpenModalBtn.Click();
 
             // Select value by pValue
-            var lRow = SwdBrowser.Driver.FindElementBy(By.CssSelector("[data-return=\"" + pValue.ToString() + "\"]"));
+            var lRow = SwdBrowser.Driver.FindElementBy(By.CssSelector("[data-return=\"" + pValue.GetStringValue() + "\"]"));
             lRow.Click();
         }
     }

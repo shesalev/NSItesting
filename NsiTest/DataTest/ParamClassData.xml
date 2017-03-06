@@ -40,6 +40,28 @@
     <entity>
       <type>paramclass</type>
       <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>reg_an</name>
+          <value>
+            <analitic>
+              <id>103009091</id>
+              <period>5</period>
+              <value>1</value>
+            </analitic>
+            <analitic>
+              <id>110434538</id>
+              <period>5</period>
+              <value>1</value>
+            </analitic>
+          </value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>paramclass</type>
+      <id>lastAdd</id>
       <action>delete</action>
       <fields>
       </fields>

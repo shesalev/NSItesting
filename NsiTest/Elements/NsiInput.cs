@@ -13,7 +13,7 @@ namespace NsiTest.Elements
         {
             Element.WaitUntilVisible(TimeSpan.FromSeconds(10));
             Element.Clear();
-            Element.SendKeys(pValue.ToString());
+            Element.SendKeys(pValue.GetStringValue());
         }
     }
 }

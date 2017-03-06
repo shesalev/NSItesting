@@ -14,7 +14,7 @@ namespace NsiTest.Elements
         {
             Element.WaitUntilVisible(TimeSpan.FromSeconds(10));
             SelectElement selectList = new SelectElement(Element);
-            selectList.SelectByValue(pValue.ToString());
+            selectList.SelectByValue(pValue.GetStringValue());
         }
     }
 }

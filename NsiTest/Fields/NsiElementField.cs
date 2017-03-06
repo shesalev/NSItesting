@@ -25,7 +25,7 @@ namespace NsiTest.Fields
 
         public string GetTextValue()
         {
-            return FieldValue.ToString();
+            return FieldValue.GetStringValue();
         }
 
     }

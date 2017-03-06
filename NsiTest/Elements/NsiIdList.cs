@@ -58,7 +58,7 @@ namespace NsiTest.Elements
         public override void SetValue(NsiElementFieldValue pValue)
         {
             // TODO: переделать на одну функцию (убрать тройные точки)
-            List<string> lAddIdList = pValue.ToString().Split(C_SEPARATOR).ToList();
+            List<string> lAddIdList = pValue.GetStringValue().Split(C_SEPARATOR).ToList();
             List<string> lDelIdList = new List<string>();
 
             IWebElement lTableIdList = FindElementBy(By.ClassName("modal_window_id_list_region"));

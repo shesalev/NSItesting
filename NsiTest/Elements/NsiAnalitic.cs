@@ -4,6 +4,8 @@ using NsiTest.Fields;
 using System.Xml.Linq;
 using Swd.Core.WebDriver;
 using OpenQA.Selenium.Support.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace NsiTest.Elements
 {
@@ -15,29 +17,46 @@ namespace NsiTest.Elements
         {
             var lElement = pValue.Element;
 
+            var lNewList = pValue.GetNsiAnlPerValueList();
+
+            NsiAnlPerElement lAnlPer = new NsiAnlPerElement();
+
+            //var lOldList = Element.FindElements(By.XPath(".//option[string-length(@value) > 0 and @selected='selected']"));
+
+            var lOldList = lAnlPer.AnlPerList;
+
+            IEnumerable<NsiAnlPer> lAddList = lNewList.Except(lOldList, new NsiAnlPerComparer());
+
+            Console.WriteLine("SetValue");
+            Console.WriteLine(lAddList.Count());
+
             // Find all xml elements with tag "analitic"
-            foreach (XElement analiticEl in lElement.Elements(ResourceXmlTags.XmlTagAnalitic))
+            foreach (var analiticEl in lAddList /*lElement.Elements(ResourceXmlTags.XmlTagAnalitic)*/)
             {
-                var periodEl = analiticEl.Element("period").Value;
-                var optValue = analiticEl.Element("value").Value + "_" + analiticEl.Element("id").Value;
+                //var lAnlList = Element.FindElements(By.XPath(".//option[@value='" + analiticEl.Value + "']"));
 
-                var lAnlList = Element.FindElements(By.XPath(".//option[@value='" + optValue + "']"));
+                //foreach (IWebElement lAnl in lAnlList)
+                //{
+                //    SelectElement lSelectList = new SelectElement(lAnl.GetPatent());
+                //    var lPeriod = lAnl.GetPatent().GetPatent().GetAttribute("headers");
 
-                foreach (IWebElement lAnl in lAnlList)
-                {
-                    SelectElement lSelectList = new SelectElement(lAnl.GetPatent());
-                    var lPeriod = lAnl.GetPatent().GetPatent().GetAttribute("headers");
+                //    if (lPeriod.Equals(analiticEl.Period))
+                //    {
+                //        if (lSelectList.WrappedElement.IsDisplayedSafe())
+                //        {
+                //            lSelectList.SelectByValue(analiticEl.Value);
+                //        }
+                //    }
+                //}
+                lAnlPer.SetSelectValue(analiticEl);
+            }
 
-                    if (lPeriod.Equals(periodEl))
-                    {
-                        if (lSelectList.WrappedElement.IsDisplayedSafe())
-                        {
-                            lSelectList.SelectByValue(optValue);
-                        }
-                    }
-                }
+            IEnumerable<NsiAnlPer> lDelList = lOldList.Except(lNewList, new NsiAnlPerComparer());
+
+            foreach (var analiticEl in lDelList /*lElement.Elements(ResourceXmlTags.XmlTagAnalitic)*/)
+            {
+                lAnlPer.SetSelectNullValue(analiticEl);
             }
         }
-
     }
 }
