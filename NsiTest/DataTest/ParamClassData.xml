@@ -2,7 +2,7 @@
 <suit>
   <request_id>4248</request_id>
   <entitys>
-    <entity>
+    <!--<entity>
       <type>paramclass</type>
       <id></id>
       <patentid>110360381</patentid>
@@ -36,7 +36,8 @@
           </value>
         </field>
       </fields>
-    </entity>
+    </entity>-->
+    
     <entity>
       <type>paramclass</type>
       <id>lastAdd</id>
@@ -48,7 +49,7 @@
             <analitic>
               <id>103009091</id>
               <period>5</period>
-              <value>1</value>
+              <value>2</value>
             </analitic>
             <analitic>
               <id>110434538</id>
@@ -59,12 +60,13 @@
         </field>
       </fields>
     </entity>
-    <entity>
+    
+    <!--<entity>
       <type>paramclass</type>
       <id>lastAdd</id>
       <action>delete</action>
       <fields>
       </fields>
-    </entity>
+    </entity>-->
   </entitys>
 </suit>

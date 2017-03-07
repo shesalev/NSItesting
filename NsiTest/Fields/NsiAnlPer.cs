@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NsiTest.Fields
+﻿namespace NsiTest.Fields
 {
+    /// <summary>
+    /// For manipulation with array of alalitics and periods
+    /// </summary>
     public class NsiAnlPer
     {
         public string Period { get; set; }

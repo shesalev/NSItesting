@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NsiTest.Fields
 {
+    /// <summary>
+    /// For except array objects of NsiAnlPer class
+    /// </summary>
     class NsiAnlPerComparer : IEqualityComparer<NsiAnlPer>
     {
         public bool Equals(NsiAnlPer x, NsiAnlPer y)

@@ -10,8 +10,14 @@ using OpenQA.Selenium.Support.UI;
 
 namespace NsiTest.Elements
 {
+    /// <summary>
+    /// For set values to analitic/period table
+    /// </summary>
     public class NsiAnlPerElement : CorePage
     {
+        /// <summary>
+        /// Get current value list from analitic/period table
+        /// </summary>
         public NsiAnlPer[] AnlPerList
         {
             get
@@ -43,6 +49,10 @@ namespace NsiTest.Elements
             }
         }
 
+        /// <summary>
+        /// Set value to analitic/period select list
+        /// </summary>
+        /// <param name="analiticEl">analitic/period old value for find selectlist item</param>
         public void SetSelectValue(NsiAnlPer analiticEl)
         {
             var lAnlList = FindElements(By.XPath(".//option[@value='" + analiticEl.Value + "']"));
@@ -61,7 +71,10 @@ namespace NsiTest.Elements
                 }
             }
         }
-
+        /// <summary>
+        /// Set null value to analitic/period select list
+        /// </summary>
+        /// <param name="analiticEl">analitic/period old value for find selectlist item</param>
         public void SetSelectNullValue(NsiAnlPer analiticEl)
         {
             var lAnlList = FindElements(By.XPath(".//option[@value='" + analiticEl.Value + "']"));
