@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using NsiTest.Fields;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using Swd.Core.Pages;
 using Swd.Core.WebDriver;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using NsiTest.Fields;
-using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NsiTest.Elements
 {
@@ -71,6 +70,7 @@ namespace NsiTest.Elements
                 }
             }
         }
+
         /// <summary>
         /// Set null value to analitic/period select list
         /// </summary>

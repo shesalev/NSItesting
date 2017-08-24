@@ -1,9 +1,9 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NsiTest.Fields;
 using NsiTest.Tests;
-using Swd.Core.WebDriver;
+using NUnit.Framework;
 using Swd.Core.Configuration;
-using NsiTest.Fields;
+using Swd.Core.WebDriver;
+using System;
 
 //// Explicit Waits
 //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -19,7 +19,7 @@ using NsiTest.Fields;
 //    "var labels = arguments[0], inputs = []; for (var i=0; i < labels.length; i++){" +
 //    "inputs.push(document.getElementById(labels[i].getAttribute('for'))); } return inputs;", labels);
 
-//// Alternatively, you can pass a “window handle” to the “switchTo().window()” 
+//// Alternatively, you can pass a “window handle” to the “switchTo().window()”
 ////method.Knowing this, it’s possible to iterate over every open window like so:
 //foreach (string handle in driver.WindowHandles) {
 //  driver.SwitchTo().Window(handle);
@@ -28,7 +28,6 @@ using NsiTest.Fields;
 //// The “navigate” interface also exposes the ability to move backwards and forwards in your browser’s history:
 //driver.Navigate().Forward();
 //driver.Navigate().Back();
-
 namespace NsiTest
 {
     [TestFixture]
@@ -54,7 +53,6 @@ namespace NsiTest
 
                 SwdBrowser.Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
                 SwdBrowser.Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(2));
-
             }
             catch (Exception e)
             {
@@ -90,7 +88,6 @@ namespace NsiTest
                         }
                         lEntity.Id = lLastId;
                     }
-
                     // Declare entity
                     EntityTestFactory entityTestFactory = new EntityTestFactory();
 
@@ -111,6 +108,15 @@ namespace NsiTest
         }
 
         [Test]
+        // Unit test
+        public void UnitPositiveTestSuit()
+        {
+            Console.WriteLine("Start Unit test");
+
+            EntityTestByFile("UnitData.xml");
+        }
+
+        [Test]
         // Class test
         public void ClassPositiveTestSuit()
         {
@@ -124,7 +130,6 @@ namespace NsiTest
         public void SimpleClassPositiveTestSuit()
         {
             Console.WriteLine("Start Class test");
-
             EntityTestByFile("ClassData2.xml");
         }
 
@@ -150,7 +155,7 @@ namespace NsiTest
         [Test]
         public void ParameterClassPositiveTestSuit()
         {
-            Console.WriteLine("Start Attibute Class test");
+            Console.WriteLine("Start Parameter Class test");
 
             EntityTestByFile("ParamClassData.xml");
         }
@@ -164,7 +169,6 @@ namespace NsiTest
             //SwdBrowser.Driver.Quit();
 
             Console.WriteLine("End EndTest");
-
         }
     }
 }

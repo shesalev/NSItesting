@@ -1,13 +1,18 @@
-﻿using OpenQA.Selenium;
-using NsiTest.Fields;
-using System.Linq;
+﻿using NsiTest.Fields;
+using OpenQA.Selenium;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NsiTest.Elements
 {
+    /// <summary>
+    /// Set value analitic/period table
+    /// </summary>
     public class NsiAnalitic : NsiElement
     {
-        public NsiAnalitic(IWebElement pElement) : base(pElement) { }
+        public NsiAnalitic(IWebElement pElement) : base(pElement)
+        {
+        }
 
         public override void SetValue(NsiElementFieldValue pValue)
         {
@@ -15,20 +20,19 @@ namespace NsiTest.Elements
 
             NsiAnlPerElement lAnlPer = new NsiAnlPerElement();
 
-            var lOldList = lAnlPer.AnlPerList;
-
-            IEnumerable<NsiAnlPer> lDelList = lOldList.Except(lNewList, new NsiAnlPerComparer());
-
-            // Set analitic values
-            foreach (var analiticEl in lNewList/*lAddList*/)
-            {
-                lAnlPer.SetSelectValue(analiticEl);
-            }
+            // Create array to unset
+            IEnumerable<NsiAnlPer> lDelList = lAnlPer.AnlPerList.Except(lNewList, new NsiAnlPerComparer());
 
             // Unset analitic values
             foreach (var analiticEl in lDelList)
             {
                 lAnlPer.SetSelectNullValue(analiticEl);
+            }
+
+            // Set analitic values
+            foreach (var analiticEl in lNewList/*lAddList*/)
+            {
+                lAnlPer.SetSelectValue(analiticEl);
             }
         }
     }

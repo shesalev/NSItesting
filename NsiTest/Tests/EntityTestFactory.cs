@@ -14,6 +14,10 @@ namespace NsiTest.Tests
             EntityTest entityTest = null;
 
             // TODO: add other using types
+            if (pEntity.Type.Equals("unit"))
+            {
+                entityTest = new UnitTest(pEntity);
+            }
             if (pEntity.Type.Equals("class"))
             {
                 entityTest = new ClassTest(pEntity);

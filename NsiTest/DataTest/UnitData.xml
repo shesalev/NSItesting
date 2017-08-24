@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suit>
+  <request_id>4248</request_id>
+  <entitys>
+    <entity>
+      <type>unit</type>
+      <id>101268004</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P81_NAME</name>
+          <value>test2</value>
+        </field>
+        <field>
+          <name>P81_SHORT_NAME</name>
+          <value>test description edit</value>
+        </field>
+        <field>
+          <name>P81_DESCRIPTION</name>
+          <value>321</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>unit</type>
+      <id></id>
+      <patentid>101984277</patentid>
+      <action>add</action>
+      <fields>
+        <field>
+          <name>P81_NAME</name>
+          <value>test</value>
+        </field>
+        <field>
+          <name>P81_SHORT_NAME</name>
+          <value>test description</value>
+        </field>
+        <field>
+          <name>P81_DESCRIPTION</name>
+          <value>1312</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>unit</type>
+      <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P81_NAME</name>
+          <value>test</value>
+        </field>
+        <field>
+          <name>P81_SHORT_NAME</name>
+          <value>1</value>
+        </field>
+        <field>
+          <name>P81_DESCRIPTION</name>
+          <value>test description edit</value>
+        </field>
+      </fields>
+    </entity>
+    <entity>
+      <type>unit</type>
+      <id>lastAdd</id>
+      <action>delete</action>
+      <fields>
+      </fields>
+    </entity>
+  </entitys>
+</suit>

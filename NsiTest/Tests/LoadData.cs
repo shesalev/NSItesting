@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NsiTest.Fields;
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using NsiTest.Fields;
 
 namespace NsiTest.Tests
 {
@@ -73,5 +73,4 @@ namespace NsiTest.Tests
             return new NsiSuite(reqEl, lEntity);
         }
     }
-
 }

@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +99,7 @@
     <Compile Include="Pages\AddPageAction\AddParamClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddAttrClassPageAction.cs" />
     <Compile Include="Pages\AddPageAction\AddClassPageAction.cs" />
+    <Compile Include="Pages\NoModalPage\SettingsTabPage.cs" />
     <Compile Include="ResourceHtml.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +110,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceXmlTags.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\Positions\PositionPageUnit.cs" />
+    <Compile Include="Pages\NoModalPage\UnitPage.cs" />
+    <Compile Include="Tests\UnitTest.cs" />
     <Compile Include="Tests\ParameterClassTest.cs" />
     <Compile Include="Tests\AttributeClassTest.cs" />
     <Compile Include="Tests\EntityTestFactory.cs" />
@@ -146,6 +152,15 @@
     <None Include="Config.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Config.Debug.config">
+      <DependentUpon>Config.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="Config.Release.config">
+      <DependentUpon>Config.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -164,6 +179,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DataTest\AttrClassData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataTest\UnitData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataTest\ParamClassData2.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -191,6 +214,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SlowCheetah.2.5.48\build\SlowCheetah.targets" Condition="Exists('..\packages\SlowCheetah.2.5.48\build\SlowCheetah.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SlowCheetah.2.5.48\build\SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SlowCheetah.2.5.48\build\SlowCheetah.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

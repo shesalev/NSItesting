@@ -2,7 +2,7 @@
 <suit>
   <request_id>4248</request_id>
   <entitys>
-    <!--<entity>
+    <entity>
       <type>paramclass</type>
       <id></id>
       <patentid>110360381</patentid>
@@ -36,8 +36,31 @@
           </value>
         </field>
       </fields>
-    </entity>-->
-    
+    </entity>
+
+    <entity>
+      <type>paramclass</type>
+      <id>lastAdd</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>reg_an</name>
+          <value>
+            <analitic>
+              <id>103009091</id>
+              <period>5</period>
+              <value>1</value>
+            </analitic>
+            <analitic>
+              <id>105076184</id>
+              <period>2</period>
+              <value>2</value>
+            </analitic>
+          </value>
+        </field>
+      </fields>
+    </entity>
+
     <entity>
       <type>paramclass</type>
       <id>lastAdd</id>
@@ -60,13 +83,13 @@
         </field>
       </fields>
     </entity>
-    
-    <!--<entity>
+
+    <entity>
       <type>paramclass</type>
       <id>lastAdd</id>
       <action>delete</action>
       <fields>
       </fields>
-    </entity>-->
+    </entity>
   </entitys>
 </suit>

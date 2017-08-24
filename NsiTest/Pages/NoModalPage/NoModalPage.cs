@@ -92,6 +92,11 @@ namespace NsiTest.Pages.NoModalPage
         {
             mainTabElement.goToClasses();
         }
+        
+        public void goToSettings()
+        {
+            mainTabElement.goToSettings();
+        }        
 
         public void goToSearch()
         {

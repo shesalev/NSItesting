@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suit>
+  <request_id>4248</request_id>
+  <entitys>
+    <entity>
+      <type>paramclass</type>
+      <id>110360397</id>
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>reg_an</name>
+          <value>
+            <analitic>
+              <id>103009091</id>
+              <period>5</period>
+              <value>1</value>
+            </analitic>
+            <analitic>
+              <id>105076184</id>
+              <period>2</period>
+              <value>2</value>
+            </analitic>
+          </value>
+        </field>
+      </fields>
+    </entity>
+  </entitys>
+</suit>
