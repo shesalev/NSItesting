@@ -5,12 +5,12 @@ using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Tests
 {
-    public class ParameterClassTest : EntityTest
+    public class ParameterObjectTest : EntityTest
     {
 
-        public ParameterClassTest(NsiEntity pEntity) : base(pEntity)
+        public ParameterObjectTest(NsiEntity pEntity) : base(pEntity)
         {
-            setPositionPageAction(new PositionPageObjectCls/*PositionPageClassParamExt*/(NoModalPage.GetCurrentPage()));
+            setPositionPageAction(new PositionPageClass(NoModalPage.GetCurrentPage()));
             setPosition();
         }
 

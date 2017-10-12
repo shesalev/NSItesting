@@ -107,6 +107,39 @@ namespace NsiTest
             }
         }
 
+        //public void EntityAllObjectTest(string pFileName)
+        //{
+        //    // Load test data
+        //    var lNsiSuite = LoadData.GetData(pFileName);
+        //    var lNsiEntityList = lNsiSuite.EntityList;
+
+        //    if (lNsiEntityList.Count > 0)
+        //    {
+        //        // Enter to request
+        //        Assert.True(RequestTest.EnterToRequest(lNsiSuite.RequestId), "No enter into nsi request");
+
+        //        // Execute test for every entity from test file
+        //        foreach (NsiEntity lEntity in lNsiEntityList)
+        //        {
+        //            Console.WriteLine("Class id: " + lEntity.Id);
+        //            EntityTest entityTest = null;
+
+        //            // TODO: add other using types
+
+        //            if (lEntity.Type.Equals("class"))
+        //            {
+        //                entityTest = new ParameterObjectTest(lEntity);
+        //                entityTest.setPosition();
+
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Assert.Fail("Пустой файл данных \"" + pFileName + "\"");
+        //    }
+        //}
+
         [Test]
         // Unit test
         public void UnitPositiveTestSuit()
@@ -158,6 +191,21 @@ namespace NsiTest
             Console.WriteLine("Start Parameter Class test");
 
             EntityTestByFile("ParamClassData.xml");
+        }
+
+        //[Test]
+        //public void ParameterObjectAllByClassPositiveTestSuit()
+        //{
+        //    Console.WriteLine("Start Object Parameters by Class test");
+
+        //    EntityAllObjectTest("ParameterObjectAllByClassData.xml");
+        //}
+        [Test]
+        public void ObjectPositiveTestSuit()
+        {
+            Console.WriteLine("Start Object test");
+
+            EntityTestByFile("ObjectData.xml");
         }
 
         [TearDown]

@@ -32,6 +32,11 @@ namespace NsiTest.Pages.NoModalPage
         [FindsBy(How = How.XPath, Using = @"id(""tab_02"")")]
         public IWebElement ParamClassTab { get; set; }
 
+        // object
+        [FindsBy(How = How.XPath, Using = @"id(""tab_04"")")]
+        public IWebElement ObjectTab { get; set; }
+
+
         public void clkCreateClass()
         {
             addClassBtn.WaitUntilVisible(TimeSpan.FromSeconds(3));
@@ -86,7 +91,11 @@ namespace NsiTest.Pages.NoModalPage
             ParamClassTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
             ParamClassTab.Click();
         }
-
+        public void clkObjectTab()
+        {
+            ObjectTab.WaitUntilVisible(TimeSpan.FromSeconds(3));
+            ObjectTab.Click();
+        }
         //public void clkCreateConnectorModal()
         //{
         //$(By.id("classesTree-id-2")).shouldBe(Condition.visible).click();

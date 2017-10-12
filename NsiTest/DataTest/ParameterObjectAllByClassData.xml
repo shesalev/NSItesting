@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suit>
+  <request_id>827</request_id>
+  <entitys>
+    <entity>
+      <type>object</type>
+      <id>100233980</id>
+      <!--<patentid>110471045</patentid>-->
+      <action>edit</action>
+      <fields>
+        <field>
+          <name>P53_DESCRIPTION</name>
+          <value>test object description</value>
+        </field>
+       </fields>
+    </entity>
+  </entitys>
+</suit>

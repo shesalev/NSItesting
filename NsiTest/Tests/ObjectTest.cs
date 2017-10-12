@@ -5,10 +5,9 @@ using NsiTest.Pages.AddPageAction;
 
 namespace NsiTest.Tests
 {
-    public class ParameterClassTest : EntityTest
+    class ObjectTest : EntityTest
     {
-
-        public ParameterClassTest(NsiEntity pEntity) : base(pEntity)
+        public ObjectTest(NsiEntity pEntity) : base(pEntity)
         {
             setPositionPageAction(new PositionPageObjectCls/*PositionPageClassParamExt*/(NoModalPage.GetCurrentPage()));
             setPosition();
@@ -16,8 +15,13 @@ namespace NsiTest.Tests
 
         protected override void ClkOpenCreateModal()
         {
-            AddParamClassPageAction AddParamClassPage = (AddParamClassPageAction)EntityPage;
-            AddParamClassPage.clkCreateParameterClass();
+            //AddClassPageAction AddClassAction = (AddClassPageAction)EntityPage;
+            //AddClassAction.clkCreateClass();
         }
+        
     }
+
+    
+
+
 }

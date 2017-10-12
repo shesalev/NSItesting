@@ -30,6 +30,10 @@ namespace NsiTest.Tests
             {
                 entityTest = new ParameterClassTest(pEntity);
             }
+            else if (pEntity.Type.Equals("object"))
+            {
+                entityTest = new ObjectTest(pEntity);
+            }
             else {}
 
             return entityTest;

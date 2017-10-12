@@ -110,6 +110,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceXmlTags.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\ObjectTest.cs" />
+    <Compile Include="Tests\ParameterObjectTest.cs" />
+    <Compile Include="Tests\Positions\PositionPageObjectCls.cs" />
     <Compile Include="Tests\Positions\PositionPageUnit.cs" />
     <Compile Include="Pages\NoModalPage\UnitPage.cs" />
     <Compile Include="Tests\UnitTest.cs" />
@@ -179,6 +182,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DataTest\AttrClassData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataTest\ObjectData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataTest\ParameterObjectAllByClassData.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
